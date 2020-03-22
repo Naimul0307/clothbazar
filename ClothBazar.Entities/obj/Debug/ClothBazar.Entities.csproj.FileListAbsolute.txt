@@ -1,0 +1,5 @@
+D:\My Prectise\ClothBazar.Web\ClothBazar.Entities\bin\Debug\ClothBazar.Entities.dll
+D:\My Prectise\ClothBazar.Web\ClothBazar.Entities\bin\Debug\ClothBazar.Entities.pdb
+D:\My Prectise\ClothBazar.Web\ClothBazar.Entities\obj\Debug\ClothBazar.Entities.csproj.CoreCompileInputs.cache
+D:\My Prectise\ClothBazar.Web\ClothBazar.Entities\obj\Debug\ClothBazar.Entities.dll
+D:\My Prectise\ClothBazar.Web\ClothBazar.Entities\obj\Debug\ClothBazar.Entities.pdb

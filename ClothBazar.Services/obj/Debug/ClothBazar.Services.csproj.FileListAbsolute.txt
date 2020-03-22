@@ -1,0 +1,17 @@
+D:\My Prectise\ClothBazar.Web\ClothBazar.Services\bin\Debug\ClothBazar.Services.dll.config
+D:\My Prectise\ClothBazar.Web\ClothBazar.Services\bin\Debug\ClothBazar.Services.dll
+D:\My Prectise\ClothBazar.Web\ClothBazar.Services\bin\Debug\ClothBazar.Services.pdb
+D:\My Prectise\ClothBazar.Web\ClothBazar.Services\bin\Debug\ClothBazar.DataBase.dll
+D:\My Prectise\ClothBazar.Web\ClothBazar.Services\bin\Debug\ClothBazar.Entities.dll
+D:\My Prectise\ClothBazar.Web\ClothBazar.Services\bin\Debug\EntityFramework.dll
+D:\My Prectise\ClothBazar.Web\ClothBazar.Services\bin\Debug\EntityFramework.SqlServer.dll
+D:\My Prectise\ClothBazar.Web\ClothBazar.Services\bin\Debug\ClothBazar.DataBase.pdb
+D:\My Prectise\ClothBazar.Web\ClothBazar.Services\bin\Debug\ClothBazar.DataBase.dll.config
+D:\My Prectise\ClothBazar.Web\ClothBazar.Services\bin\Debug\ClothBazar.Entities.pdb
+D:\My Prectise\ClothBazar.Web\ClothBazar.Services\bin\Debug\EntityFramework.xml
+D:\My Prectise\ClothBazar.Web\ClothBazar.Services\bin\Debug\EntityFramework.SqlServer.xml
+D:\My Prectise\ClothBazar.Web\ClothBazar.Services\obj\Debug\ClothBazar.Services.csprojAssemblyReference.cache
+D:\My Prectise\ClothBazar.Web\ClothBazar.Services\obj\Debug\ClothBazar.Services.csproj.CoreCompileInputs.cache
+D:\My Prectise\ClothBazar.Web\ClothBazar.Services\obj\Debug\ClothBazar.Services.csproj.CopyComplete
+D:\My Prectise\ClothBazar.Web\ClothBazar.Services\obj\Debug\ClothBazar.Services.dll
+D:\My Prectise\ClothBazar.Web\ClothBazar.Services\obj\Debug\ClothBazar.Services.pdb

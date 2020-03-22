@@ -1,0 +1,13 @@
+﻿@model List<ClothBazar.Entities.Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@foreach (var category in Model)
+{
+    <h4>@category.Name</h4>
+    <h4>@category.Description</h4>
+}
