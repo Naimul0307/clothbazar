@@ -34,5 +34,25 @@ namespace ClothBazar.Services
                 dbcontext.SaveChanges();
             }
         }
+
+        public void UpdateCategory(Category category)
+        {
+            using (var dbcontext = new CBContext())
+            {
+                dbcontext.Entry(category).State = System.Data.Entity.EntityState.Modified;
+                dbcontext.SaveChanges();
+            }
+        }
+        public void DeleteCategory(int Id)
+        {
+            using(var dbcontext = new CBContext())
+            {
+                //dbcontext.Entry(category).State = System.Data.Entity.EntityState.Deleted;
+
+                var category = dbcontext.Categories.Find(Id);
+                dbcontext.Categories.Remove(category);
+                dbcontext.SaveChanges();
+            }
+        }
     }
 }

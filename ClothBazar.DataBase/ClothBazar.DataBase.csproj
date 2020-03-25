@@ -52,9 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CBContext.cs" />
-    <Compile Include="Migrations\202003220934022_add-model.cs" />
-    <Compile Include="Migrations\202003220934022_add-model.designer.cs">
-      <DependentUpon>202003220934022_add-model.cs</DependentUpon>
+    <Compile Include="Migrations\202003250716418_version1.cs" />
+    <Compile Include="Migrations\202003250716418_version1.designer.cs">
+      <DependentUpon>202003250716418_version1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,8 +70,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003220934022_add-model.resx">
-      <DependentUpon>202003220934022_add-model.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003250716418_version1.resx">
+      <DependentUpon>202003250716418_version1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

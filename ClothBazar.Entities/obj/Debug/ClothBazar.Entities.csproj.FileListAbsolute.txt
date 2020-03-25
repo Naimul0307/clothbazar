@@ -3,3 +3,9 @@ D:\My Prectise\ClothBazar.Web\ClothBazar.Entities\bin\Debug\ClothBazar.Entities.
 D:\My Prectise\ClothBazar.Web\ClothBazar.Entities\obj\Debug\ClothBazar.Entities.csproj.CoreCompileInputs.cache
 D:\My Prectise\ClothBazar.Web\ClothBazar.Entities\obj\Debug\ClothBazar.Entities.dll
 D:\My Prectise\ClothBazar.Web\ClothBazar.Entities\obj\Debug\ClothBazar.Entities.pdb
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Entities\bin\Debug\ClothBazar.Entities.dll
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Entities\bin\Debug\ClothBazar.Entities.pdb
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Entities\obj\Debug\ClothBazar.Entities.csprojAssemblyReference.cache
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Entities\obj\Debug\ClothBazar.Entities.csproj.CoreCompileInputs.cache
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Entities\obj\Debug\ClothBazar.Entities.dll
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Entities\obj\Debug\ClothBazar.Entities.pdb

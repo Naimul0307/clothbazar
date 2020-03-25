@@ -34,5 +34,24 @@ namespace ClothBazar.Web.Controllers
             var category = CategoriesService.GetCategory(Id);
             return View(category);
         }
+        [HttpPost]
+        public ActionResult Edit(Category category)
+        {
+            CategoriesService.UpdateCategory(category);
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Delete(int Id)
+        {
+            var category = CategoriesService.GetCategory(Id);
+            return View(category);
+        }
+        [HttpPost]
+        public ActionResult Delete(Category category)
+        {
+            CategoriesService.DeleteCategory(category.Id);
+            return RedirectToAction("Index");
+        }
+
     }
 }

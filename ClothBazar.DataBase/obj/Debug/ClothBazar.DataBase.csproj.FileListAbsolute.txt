@@ -14,3 +14,19 @@ D:\My Prectise\ClothBazar.Web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.
 D:\My Prectise\ClothBazar.Web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.pdb
 D:\My Prectise\ClothBazar.Web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.Migrations.addmodel.resources
 D:\My Prectise\ClothBazar.Web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.csproj.GenerateResource.cache
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\bin\Debug\ClothBazar.DataBase.dll.config
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\bin\Debug\ClothBazar.DataBase.dll
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\bin\Debug\ClothBazar.DataBase.pdb
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\bin\Debug\ClothBazar.Entities.dll
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\bin\Debug\EntityFramework.dll
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\bin\Debug\ClothBazar.Entities.pdb
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\bin\Debug\EntityFramework.xml
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.csprojAssemblyReference.cache
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.csproj.CoreCompileInputs.cache
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.csproj.CopyComplete
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.dll
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.pdb
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.Migrations.version1.resources
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.csproj.GenerateResource.cache

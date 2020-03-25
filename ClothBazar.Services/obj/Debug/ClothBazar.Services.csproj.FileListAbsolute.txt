@@ -15,3 +15,20 @@ D:\My Prectise\ClothBazar.Web\ClothBazar.Services\obj\Debug\ClothBazar.Services.
 D:\My Prectise\ClothBazar.Web\ClothBazar.Services\obj\Debug\ClothBazar.Services.csproj.CopyComplete
 D:\My Prectise\ClothBazar.Web\ClothBazar.Services\obj\Debug\ClothBazar.Services.dll
 D:\My Prectise\ClothBazar.Web\ClothBazar.Services\obj\Debug\ClothBazar.Services.pdb
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Services\bin\Debug\ClothBazar.Services.dll.config
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Services\bin\Debug\ClothBazar.Services.dll
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Services\bin\Debug\ClothBazar.Services.pdb
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Services\bin\Debug\ClothBazar.DataBase.dll
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Services\bin\Debug\ClothBazar.Entities.dll
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Services\bin\Debug\EntityFramework.dll
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Services\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Services\bin\Debug\ClothBazar.DataBase.pdb
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Services\bin\Debug\ClothBazar.DataBase.dll.config
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Services\bin\Debug\ClothBazar.Entities.pdb
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Services\bin\Debug\EntityFramework.xml
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Services\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Services\obj\Debug\ClothBazar.Services.csprojAssemblyReference.cache
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Services\obj\Debug\ClothBazar.Services.csproj.CoreCompileInputs.cache
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Services\obj\Debug\ClothBazar.Services.csproj.CopyComplete
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Services\obj\Debug\ClothBazar.Services.dll
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Services\obj\Debug\ClothBazar.Services.pdb
