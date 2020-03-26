@@ -1,4 +1,4 @@
-﻿@model List<Product>
+﻿@model List<Product> 
 @{
     ViewBag.Title = "ProductTable";
 }
@@ -25,11 +25,11 @@
              {
                  <tr>
                      <td>@product.Name</td>
-                     <td>-</td>
+                     <td>@product.Category</td>
                      <td>@product.Price</td>
                      <td>
-                         <button>Edit</button>
-                         <button>Delete</button>
+                         <button class="editBtn" data-id="@product.Id"> Edit </button>
+                         <button class="deleteBtn" data-id="@product.Id">Delete</button>
                      </td>
                  </tr>
              }
@@ -57,4 +57,59 @@
                 alert("Fail");
             });
         });
+</script>
+
+<script>
+    $("#newBtn").click(function () {
+        $.ajax({
+            type: "Get",
+            url: "/Product/Create", 
+        })
+            .done(function (resposen) {
+                $("#actionContainer").html(resposen);
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("Fail");
+            });
+    });
+</script>
+
+<script>
+    $(".editBtn").click(function () {
+        $.ajax({
+            type: "Get",
+            url: "/Product/Edit",
+            data:{
+            Id: $(this).attr("data-id")
+        }
+
+        })
+            .done(function (resposen) {
+                $("#actionContainer").html(resposen);
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("Fail");
+            });
+    });
+
+    $(".deleteBtn").click(function () {
+        var confirmDelete = confirm("Are Want Delete This Product?")
+        if (confirmDelete)
+        {
+            $.ajax({
+                type: "Post",
+                url: "/Product/Delete",
+                data: {
+                    Id: $(this).attr("data-id")
+                }
+            })
+                .done(function (resposen) {
+                    $("#tableContent").html(resposen);
+                })
+                .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("Fail");
+                });
+        }
+      
+    });
 </script>

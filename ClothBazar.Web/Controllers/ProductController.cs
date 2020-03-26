@@ -19,7 +19,7 @@ namespace ClothBazar.Web.Controllers
 
         public ActionResult ProductTable(string search)
         {
-             var products = productsService.GetProducts();
+            var products = productsService.GetProducts();
             if (!string.IsNullOrEmpty(search))
             {
                 products = products.Where(p => p.Name == search).ToList();
@@ -40,5 +40,26 @@ namespace ClothBazar.Web.Controllers
             productsService.SaveProduct(product);
             return RedirectToAction("ProductTable");
         }
+
+        [HttpGet]
+        public ActionResult Edit(int Id)
+        {
+            var product = productsService.GetProduct(Id);
+            return PartialView(product);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Product product)
+        {
+            productsService.UpdateProduct(product);
+            return RedirectToAction("ProductTable");
+        }
+        [HttpPost]
+        public ActionResult Delete(int Id)
+        {
+            productsService.DeleteProduct(Id);
+            return RedirectToAction("ProductTable");
+        }
     }
+
 }

@@ -1,12 +1,11 @@
 ﻿
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Create Product</h2>
 
-<form method="post">
+<form id="createProduct">
 
     <label>Name</label>
     <input name="Name" />
@@ -17,5 +16,22 @@
     <label>Price</label>
     <input name="Price" />
     <br />
-    <button type="submit">Save</button>
+    <button type="button" id="saveBtn">Save</button>
 </form>
+
+<script>
+    $("#saveBtn").click(function () {
+        $.ajax({
+            type: "Post",
+            url: "/Product/Create",
+            data: $("#createProduct").serialize()
+        })
+            .done(function (resposen) {
+                $("#tableContent").html(resposen);
+                $("#actionContainer").html("");
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("Fail");
+            });
+    });
+</script>
