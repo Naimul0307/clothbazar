@@ -13,5 +13,42 @@
     <label>Description</label>
     <input name="Description" />
     <br />
+    <label> Image</label>
+    <input id="imageUplode" name="Image" type="file" accept=" .png , .jpg" />
+    <img id="categoryImage" />
+    <br />
     <button type="submit">Save</button>
 </form>
+
+@*uplode Mulitiple/Single Image*@
+<script>
+    $("#imageUplode").change(function () {
+        debugger;
+        var element = this;
+        var formData = new FormData();
+        var totalFiles = element.files.length;
+        for (var i = 0; i < totalFiles; i++) {
+            var file = element.files[i];
+            formData.append("Photo", file);
+        }
+
+        $.ajax({
+            type: "Post",
+            url: "/Shared/UploadImage", 
+            data: formData,
+            dataType: "Json",
+            contentType: false,
+            processData: false
+        })
+        .done(function (response) {
+                debugger;
+            console.log(response);
+            if (response.Success == true) {
+                $("#categoryImage").attr("src", response.ImageURL);
+            }
+         })
+        .file(function (XMLHttpRequest, textStatus, erroThrown) {
+                alert("Fail");
+          });
+    })
+</script>
