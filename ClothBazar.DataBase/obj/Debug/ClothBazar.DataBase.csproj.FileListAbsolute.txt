@@ -30,3 +30,4 @@ C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBaza
 C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.pdb
 C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.Migrations.version1.resources
 C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.csproj.GenerateResource.cache
+C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.Migrations.ImageURl.resources

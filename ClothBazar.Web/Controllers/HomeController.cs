@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClothBazar.Services;
+using ClothBazar.Web.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,12 @@ namespace ClothBazar.Web.Controllers
 {
     public class HomeController : Controller
     {
+        CategoriesService categoriesService = new CategoriesService();
         public ActionResult Index()
         {
-            return View();
+            HomeViewModels model = new HomeViewModels();
+            model.Categories = categoriesService.GetCategories();
+            return View(model);
         }
 
         public ActionResult About()

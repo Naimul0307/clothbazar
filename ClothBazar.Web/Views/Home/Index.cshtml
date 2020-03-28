@@ -1,5 +1,8 @@
-﻿@{
+﻿@model  ClothBazar.Web.ViewModel.HomeViewModels
+
+@{
     ViewBag.Title = "Home Page";
+    var firstCaregory = Model.Categories.Where(c => c.ImageURL != null).First();
 }
 <!-- SLIDER -->
 <div class="rev_slider_wrapper fullwidthbanner-container">
@@ -187,10 +190,10 @@
                 <div class="flat-image-box style-1 data-effect div-h22 clearfix">
                     <div class="item data-effect-item">
                         <div class="inner">
-                            <div class="thumb">
-                                <img src="~/Content/images/image-box/imgbox-1-375x500.jpg" alt="Image">
+                            <div class="thumb"> <!--Category Images -->
+                                <img src="@firstCaregory.ImageURL" alt="Image">
                                 <div class="elm-btn">
-                                    <a href="#" class="themesflat-button bg-white width-150">For Men’s</a>
+                                    <a href="#" class="themesflat-button bg-white width-150">Mobile</a>
                                 </div>
                                 <div class="overlay-effect bg-color-1"></div>
                             </div>
