@@ -3,15 +3,33 @@
     ViewBag.Title = "ProductTable";
 }
 
- <div>
-  <form method="post">
-      <input  name="search" id="searchTxt" />
-      <button type="button" id="searchBtn">Search</button>
-  </form>
-     <button type="button" id="newBtn">New</button>
+ <div class="form-control">
+     <form method="post">
+         <div class="row">
+             <div class="col-md-8">
+                 <div class="form-group">
+                     <label>Search</label>
+                     <input class="form-control" name="search" id="searchTxt" />
+                 </div>
+             </div>
+             <div class="col-md-4">
+                 <div class="form-group">
+                     <label>Action</label>
+                     <div class="row">
+                         <div class="col-md-5">
+                             <button class="form-control btn btn-danger" type="button" id="searchBtn">Search</button>
+                         </div>
+                         <div class="col-md-5">
+                             <button class="form-control btn btn-danger" type="button" id="newBtn">New</button>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>    
+     </form>
  </div>
- <div>
-     <table>
+ <div class="form-control">
+     <table class="table table-striped table-dark table-bordered">
          <thead>
              <tr>
                  <td>Product Name</td>
@@ -25,7 +43,16 @@
              {
                  <tr>
                      <td>@product.Name</td>
-                     <td>@product.Category</td>
+                     <td>
+                         @if (product.Category != null)
+                         {
+                             <text>@product.Category.Name</text>
+                         }
+                         else
+                         {
+                             <text>-</text>
+                         }
+                     </td>
                      <td>@product.Price</td>
                      <td>
                          <button class="editBtn" data-id="@product.Id"> Edit </button>

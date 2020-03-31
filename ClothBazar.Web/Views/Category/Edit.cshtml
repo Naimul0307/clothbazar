@@ -1,19 +1,39 @@
 ﻿@model ClothBazar.Entities.Category
 @{
     ViewBag.Title = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    var trueChecked = Model.isFeatured ? "checked" : string.Empty;
+    var falseChecked = !Model.isFeatured ? "checked" : string.Empty;
 }
 
-<h2>Edit</h2>
+    <div class="container">
+        <h2>Edit</h2>
+        <hr />
+        <form method="post">
 
-<form method="post">
+            <input type="hidden" name="Id" value="@Model.Id" />
 
-    <input type="hidden" name="Id" value="@Model.Id"/>
-    <label>Name</label>
-    <input name="Name" value="@Model.Name" />
-    <br />
-    <label>Description</label>
-    <input name="Description" value="@Model.Description" />
-    <br />
-    <button type="submit">Save</button>
-</form>
+            <div class="form-group">
+                <label>Name</label>
+                <input class="form-control" name="Name" />
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <input class="form-control" name="Description" />
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label>Is Featured ?</label>
+                    <div class="row">
+                        <div class="form-control col-md-4">
+                            <input class="form-control" type="radio" name="isFeatured" value="True" @trueChecked />True
+                        </div>
+                        <div class="form-control col-md-4">
+                            <input class="form-control" type="radio" name="isFeatured" value="False" @falseChecked />False
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="form-control btn btn-danger" type="submit">Save</button>
+        </form>
+    </div>
+

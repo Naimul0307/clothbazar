@@ -9,3 +9,9 @@ C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Entities\obj\Debug\ClothBaza
 C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Entities\obj\Debug\ClothBazar.Entities.csproj.CoreCompileInputs.cache
 C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Entities\obj\Debug\ClothBazar.Entities.dll
 C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.Entities\obj\Debug\ClothBazar.Entities.pdb
+D:\clothbazar.web\ClothBazar.Entities\bin\Debug\ClothBazar.Entities.dll
+D:\clothbazar.web\ClothBazar.Entities\bin\Debug\ClothBazar.Entities.pdb
+D:\clothbazar.web\ClothBazar.Entities\obj\Debug\ClothBazar.Entities.csprojAssemblyReference.cache
+D:\clothbazar.web\ClothBazar.Entities\obj\Debug\ClothBazar.Entities.csproj.CoreCompileInputs.cache
+D:\clothbazar.web\ClothBazar.Entities\obj\Debug\ClothBazar.Entities.dll
+D:\clothbazar.web\ClothBazar.Entities\obj\Debug\ClothBazar.Entities.pdb

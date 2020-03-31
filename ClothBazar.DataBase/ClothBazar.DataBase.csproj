@@ -52,13 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CBContext.cs" />
-    <Compile Include="Migrations\202003250716418_version1.cs" />
-    <Compile Include="Migrations\202003250716418_version1.designer.cs">
-      <DependentUpon>202003250716418_version1.cs</DependentUpon>
+    <Compile Include="Migrations\202003311320503_Version1.cs" />
+    <Compile Include="Migrations\202003311320503_Version1.designer.cs">
+      <DependentUpon>202003311320503_Version1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202003280542599_ImageURl.cs" />
-    <Compile Include="Migrations\202003280542599_ImageURl.designer.cs">
-      <DependentUpon>202003280542599_ImageURl.cs</DependentUpon>
+    <Compile Include="Migrations\202003311455199_IsFeatured.cs" />
+    <Compile Include="Migrations\202003311455199_IsFeatured.designer.cs">
+      <DependentUpon>202003311455199_IsFeatured.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,11 +74,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003250716418_version1.resx">
-      <DependentUpon>202003250716418_version1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003311320503_Version1.resx">
+      <DependentUpon>202003311320503_Version1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003280542599_ImageURl.resx">
-      <DependentUpon>202003280542599_ImageURl.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003311455199_IsFeatured.resx">
+      <DependentUpon>202003311455199_IsFeatured.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

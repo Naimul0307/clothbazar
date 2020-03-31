@@ -4,22 +4,48 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
-<form method="post">
+    <div class="container">
 
-    <label>Name</label>
-    <input name="Name" />
-    <br />
-    <label>Description</label>
-    <input name="Description" />
-    <br />
-    <label> Image</label>
-    <input id="ImageURL" name="ImageURL" type="hidden" />
-    <input id="imageUplode" name="image" type="file" accept=" .png , .jpg" />
-    <img id="categoryImage" />
-    <br />
-    <button type="submit">Save</button>
-</form>
+        <h2>Create</h2>
+        <hr />
+        <form method="post">
+            <div class="form-group">
+                <label>Name</label>
+                <input class="form-control" name="Name" />
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <input class="form-control" name="Description" />
+            </div>
+            <div class="form-group">
+                <label> Image</label>
+                <input id="ImageURL" name="ImageURL" type="hidden" />
+                <input class="form-control" id="imageUplode" name="image" type="file" accept=" .png , .jpg" />
+            </div>
+
+            <div class="form-group">
+                <div class="thumb">
+                    <img id="categoryImage" />
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label>Is Featured ?</label>
+                    <div class="row">
+                        <div class="form-control col-md-4">
+                            <input class="form-control" type="radio" name="isFeatured" value="True" />True
+                        </div>
+                        <div class="form-control col-md-4">
+                            <input class="form-control" type="radio" name="isFeatured" value="False" />False
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="form-control btn btn-danger" type="submit">Save</button>
+        </form>
+    </div>
+
 
 @*uplode Mulitiple/Single Image*@
 <script>

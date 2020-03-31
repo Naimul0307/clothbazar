@@ -3,16 +3,16 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class ImageURl : DbMigration
+    public partial class IsFeatured : DbMigration
     {
         public override void Up()
         {
-            AddColumn("dbo.Categories", "ImageURL", c => c.String());
+            AddColumn("dbo.Categories", "isFeatured", c => c.Boolean(nullable: false));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Categories", "ImageURL");
+            DropColumn("dbo.Categories", "isFeatured");
         }
     }
 }

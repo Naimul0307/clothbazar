@@ -14,7 +14,7 @@ namespace ClothBazar.Web.Controllers
         public ActionResult Index()
         {
             HomeViewModels model = new HomeViewModels();
-            model.Categories = categoriesService.GetCategories();
+            model.FeaturedCategories = categoriesService.GetCategories();
             return View(model);
         }
 

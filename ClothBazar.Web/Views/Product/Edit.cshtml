@@ -4,23 +4,29 @@
     
 }
 
-<h2>Edit Product</h2>
-<form id="editProduct">
-     <input type="hidden" name="Id" value="@Model.Id"/>
+    <div class="container-fluid">
+        <h2>Edit Product</h2>
+        <hr />
+        <form id="editProduct">
+            <input type="hidden" name="Id" value="@Model.Id" />
 
-    <label>Name</label>
-    <input name="Name" value="@Model.Name" />
-    <br />
+            <div class="form-group">
+                <label>Name</label>
+                <input class="form-control" name="Name" value="@Model.Name" />
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <input class="form-control" name="Description" value="@Model.Description" />
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                <input class="form-control" name="Price" value="@Model.Price" />
+            </div>
 
-    <label>Description</label>
-    <input name="Description" value="@Model.Description" />
-    <br />
+            <button class="form-control btn btn-danger" type="button" id="updateBtn">Update</button>
+        </form>
+    </div>
 
-    <label>Price</label>
-    <input name="Price" value="@Model.Price"/>
-    <br />
-    <button type="button" id="updateBtn">Update</button>
-</form>
 
 <script>
     $("#updateBtn").click(function () {
