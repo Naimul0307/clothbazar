@@ -15,7 +15,7 @@ namespace ClothBazar.Services
         {
             using (var dbcontext = new CBContext())
             {
-                return dbcontext.Products.Find(Id);
+                return dbcontext.Products.Where(p=>p.Id==Id).Include(c=>c.Category).FirstOrDefault();
 
             }
         }

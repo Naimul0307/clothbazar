@@ -1,35 +1,40 @@
-﻿@model List<Category>
+﻿@model  ProductViewModels
 @{
     ViewBag.Title = "Create";
 }
 
-<div class="container-fluid">
-    <h2>Create Product</h2>
-    <hr />
-    <form id="createProduct">
-        <div class="form-group">
-            <label>Category</label>
-            <select name="CategoryId" class="form-control">
-                @foreach (var category in Model)
-                {
-                    <option value="@category.Id">@category.Name</option>
-                }
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Name</label>
-            <input name="Name" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label>Description</label>
-            <input name="Description" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label>Price</label>
-            <input name="Price" class="form-control" />
-        </div>
-        <button class="form-control btn btn-danger" type="button" id="saveBtn">Save</button>
-    </form>
+    <div class="container">
+        <h2>Create Product</h2>
+        <hr />
+        <form id="createProduct">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select name="CategoryId" class="form-control">
+                            @foreach (var category in Model.AvailableCategories)
+                            {
+                                <option value="@category.Id">@category.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input name="Name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input name="Description" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input name="Price" class="form-control" />
+                    </div>
+                    <button class="form-control btn btn-danger" type="button" id="saveBtn">Save</button>
+
+                </div>
+            </div>
+        </form>
 </div>
 
 @*Usin Ajax to save data*@
@@ -41,7 +46,7 @@
             data: $("#createProduct").serialize()
         })
             .done(function (resposen) {
-                $("#tableContent").html(resposen);
+                $("#tableContiner").html(resposen);
                 $("#actionContainer").html("");
             })
             .fail(function (XMLHttpRequest, textStatus, errorThrown) {

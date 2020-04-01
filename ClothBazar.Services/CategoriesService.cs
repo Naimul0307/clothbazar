@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Data.Entity;
 namespace ClothBazar.Services
 {
     public class CategoriesService
@@ -22,7 +22,7 @@ namespace ClothBazar.Services
         {
             using (var dbcontext = new CBContext())
             {
-               return dbcontext.Categories.ToList();
+               return dbcontext.Categories.Include(p=>p.Products).ToList();
                
             }
         }

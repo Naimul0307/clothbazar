@@ -1,48 +1,52 @@
 ﻿
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    var imageURL = "/Content/images/system/placeholder-image.png";
 }
 
     <div class="container">
 
         <h2>Create</h2>
         <hr />
-        <form method="post">
-            <div class="form-group">
-                <label>Name</label>
-                <input class="form-control" name="Name" />
-            </div>
-            <div class="form-group">
-                <label>Description</label>
-                <input class="form-control" name="Description" />
-            </div>
-            <div class="form-group">
-                <label> Image</label>
-                <input id="ImageURL" name="ImageURL" type="hidden" />
-                <input class="form-control" id="imageUplode" name="image" type="file" accept=" .png , .jpg" />
-            </div>
-
-            <div class="form-group">
-                <div class="thumb">
-                    <img id="categoryImage" />
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="form-group">
-                    <label>Is Featured ?</label>
-                    <div class="row">
-                        <div class="form-control col-md-4">
-                            <input class="form-control" type="radio" name="isFeatured" value="True" />True
-                        </div>
-                        <div class="form-control col-md-4">
-                            <input class="form-control" type="radio" name="isFeatured" value="False" />False
+        <form id="createCategory">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input class="form-control" name="Name" />
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input class="form-control" name="Description" />
+                    </div>
+                    <div class="form-group">
+                        <label> Image</label>
+                        <input id="ImageURL" name="ImageURL" type="hidden" />
+                        <input class="form-control" id="imageUplode" name="image" type="file" accept=" .png , .jpg" />
+                    </div>
+                        <div class="form-group">
+                            <label>Is Featured ?</label>
+                            <div class="input-group">
+                                <div class="radio form-control">
+                                    <label>
+                                         <input  type="radio" name="isFeatured" value="True" />True
+                                    </label> 
+                                </div>
+                                <div class="radio form-control">
+                                    <label>
+                                        <input  type="radio" name="isFeatured" value="False" />False
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                <div class="col-md-4">
+                    <div class="thumb">
+                        <img class="img-thumbnail img-fluid" id="categoryImage" src="@imageURL" />
+                    </div>
                 </div>
-            </div>
-
-            <button class="form-control btn btn-danger" type="submit">Save</button>
+                </div>
+                <button class="form-control btn btn-danger" id="saveBtn" type="button">Save</button>
         </form>
     </div>
 
@@ -50,7 +54,7 @@
 @*uplode Mulitiple/Single Image*@
 <script>
     $("#imageUplode").change(function () {
-        debugger;
+
         var element = this;
         var formData = new FormData();
         var totalFiles = element.files.length;
@@ -61,22 +65,36 @@
 
         $.ajax({
             type: "Post",
-            url: "/Shared/UploadImage", 
+            url: "/Shared/UploadImage",
             data: formData,
             dataType: "Json",
             contentType: false,
             processData: false
         })
-        .done(function (response) {
-                debugger;
-            console.log(response);
-            if (response.Success == true) {
-                $("#ImageURL").val(response.ImageURL);
-                $("#categoryImage").attr("src", response.ImageURL);
-            }
-         })
-        .file(function (XMLHttpRequest, textStatus, erroThrown) {
+            .done(function (response) {
+                console.log(response);
+                if (response.Success == true) {
+                    $("#ImageURL").val(response.ImageURL);
+                    $("#categoryImage").attr("src", response.ImageURL);
+                }
+            })
+            .file(function (XMLHttpRequest, textStatus, erroThrown) {
                 alert("Fail");
-          });
-    })
+            });
+    });
+
+    $("#saveBtn").click(function () {
+        $.ajax({
+            type: 'POST',
+            url: '/Category/Create',
+            data: $("#createCategory").serialize()
+        })
+            .done(function (response) {
+                $("#tableContiner").html(response);
+                $("#actionContainer").html("");
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("FAIL");
+            });
+    });
 </script>

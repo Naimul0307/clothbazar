@@ -1,5 +1,6 @@
 ﻿ using ClothBazar.Entities;
 using ClothBazar.Services;
+using ClothBazar.Web.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,47 +11,86 @@ namespace ClothBazar.Web.Controllers
 {
     public class CategoryController : Controller
     {
-        CategoriesService CategoriesService = new CategoriesService();
+        CategoriesService categoriesService = new CategoriesService();
+
+        [HttpGet]
         public ActionResult Index()
         {
-            var categories = CategoriesService.GetCategories();
-            return View(categories);
+            return View();
+        }
+
+        public ActionResult CategoryTable(string search)
+        {
+            CategorySearchViewModels models = new CategorySearchViewModels();
+
+            models.Categories = categoriesService.GetCategories();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                models.SearchTerm = search;
+
+                models.Categories = models.Categories.Where(p => p.Name != null && p.Name.ToLower().Contains(search.ToLower())).ToList();
+            }
+
+            return PartialView("CategoryTable", models);
         }
         // GET: Category
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            CategoryViewModels models = new CategoryViewModels();
+
+            return PartialView(models);
         }
         [HttpPost]
-        public ActionResult Create(Category category)
+        public ActionResult Create(CategoryViewModels models)
         {
-            CategoriesService.SaveCategory(category);
-            return View();
+            {
+
+                var newCategory = new Category();
+                newCategory.Name = models.Name;
+                newCategory.Description = models.Description;
+                newCategory.ImageURL = models.ImageURL;
+                newCategory.isFeatured = models.isFeatured;
+
+                categoriesService.SaveCategory(newCategory);
+
+                return RedirectToAction("CategoryTable");
+            }
         }
+
         [HttpGet]
         public ActionResult Edit(int Id)
         {
-            var category = CategoriesService.GetCategory(Id);
-            return View(category);
+            EditCategoryViewModels models = new EditCategoryViewModels();
+            var category = categoriesService.GetCategory(Id);
+            models.Id = category.Id;
+            models.Name = category.Name;
+            models.Description = category.Description;
+            models.ImageURL = category.ImageURL;
+            models.isFeatured = category.isFeatured;
+
+            return PartialView(models);
         }
+
         [HttpPost]
-        public ActionResult Edit(Category category)
+        public ActionResult Edit(EditCategoryViewModels models)
         {
-            CategoriesService.UpdateCategory(category);
-            return RedirectToAction("Index");
+            var existingCategory = categoriesService.GetCategory(models.Id);
+            existingCategory.Name = models.Name;
+            existingCategory.Description = models.Description;
+            existingCategory.ImageURL = models.ImageURL;
+            existingCategory.isFeatured = models.isFeatured;
+            categoriesService.UpdateCategory(existingCategory);
+            return RedirectToAction("CategoryTable");
         }
-        [HttpGet]
+
+        [HttpPost]
         public ActionResult Delete(int Id)
         {
-            var category = CategoriesService.GetCategory(Id);
-            return View(category);
-        }
-        [HttpPost]
-        public ActionResult Delete(Category category)
-        {
-            CategoriesService.DeleteCategory(category.Id);
-            return RedirectToAction("Index");
+            categoriesService.DeleteCategory(Id);
+
+            return RedirectToAction("CategoryTable");
         }
 
     }
