@@ -2070,13 +2070,12 @@ pre code {
 .table {
   width: 100%;
   max-width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .table th,
 .table td {
   padding: 0.75rem;
-  vertical-align: top;
   border-top: 1px solid #eceeef;
 }
 
