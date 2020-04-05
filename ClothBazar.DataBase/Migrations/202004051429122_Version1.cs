@@ -13,6 +13,7 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         ImageURL = c.String(),
+                        isFeatured = c.Boolean(nullable: false),
                         Name = c.String(),
                         Description = c.String(),
                     })
@@ -32,12 +33,22 @@
                 .ForeignKey("dbo.Categories", t => t.Category_Id)
                 .Index(t => t.Category_Id);
             
+            CreateTable(
+                "dbo.Configs",
+                c => new
+                    {
+                        Key = c.String(nullable: false, maxLength: 128),
+                        Value = c.String(),
+                    })
+                .PrimaryKey(t => t.Key);
+            
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.Products", "Category_Id", "dbo.Categories");
             DropIndex("dbo.Products", new[] { "Category_Id" });
+            DropTable("dbo.Configs");
             DropTable("dbo.Products");
             DropTable("dbo.Categories");
         }

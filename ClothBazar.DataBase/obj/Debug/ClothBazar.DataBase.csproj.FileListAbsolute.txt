@@ -47,4 +47,3 @@ D:\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.dll
 D:\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.pdb
 D:\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.Migrations.Version1.resources
 D:\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.csproj.GenerateResource.cache
-D:\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.Migrations.IsFeatured.resources

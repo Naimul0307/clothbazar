@@ -52,13 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CBContext.cs" />
-    <Compile Include="Migrations\202003311320503_Version1.cs" />
-    <Compile Include="Migrations\202003311320503_Version1.designer.cs">
-      <DependentUpon>202003311320503_Version1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003311455199_IsFeatured.cs" />
-    <Compile Include="Migrations\202003311455199_IsFeatured.designer.cs">
-      <DependentUpon>202003311455199_IsFeatured.cs</DependentUpon>
+    <Compile Include="Migrations\202004051429122_Version1.cs" />
+    <Compile Include="Migrations\202004051429122_Version1.designer.cs">
+      <DependentUpon>202004051429122_Version1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,11 +70,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003311320503_Version1.resx">
-      <DependentUpon>202003311320503_Version1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003311455199_IsFeatured.resx">
-      <DependentUpon>202003311455199_IsFeatured.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004051429122_Version1.resx">
+      <DependentUpon>202004051429122_Version1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

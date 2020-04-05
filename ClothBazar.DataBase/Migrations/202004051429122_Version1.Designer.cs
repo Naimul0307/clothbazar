@@ -13,7 +13,7 @@ namespace ClothBazar.DataBase.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202003311320503_Version1"; }
+            get { return "202004051429122_Version1"; }
         }
         
         string IMigrationMetadata.Source
