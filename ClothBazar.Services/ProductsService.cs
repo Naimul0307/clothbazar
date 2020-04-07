@@ -11,6 +11,25 @@ namespace ClothBazar.Services
 {
     public class ProductsService
     {
+        #region Singleton
+        public static ProductsService ClassObject
+        {
+            get
+            {
+                if (privetInMemoryObject == null)
+                {
+                    privetInMemoryObject = new ProductsService();
+                }
+                return privetInMemoryObject;
+            }
+        }
+
+        private static ProductsService privetInMemoryObject { get; set; }      //Singleton Design Pattern For Pagenation
+        private ProductsService()
+        {
+
+        }
+        #endregion
         public Product GetProduct(int Id)
         {
             using (var dbcontext = new CBContext())
@@ -29,11 +48,13 @@ namespace ClothBazar.Services
             }
         }
 
-        public List<Product> GetProducts()
+        public List<Product> GetProducts(int pageNo)
         {
+            int pageSize = 5;
+
             using (var dbcontext = new CBContext())
             {
-                return dbcontext.Products.Include(c=>c.Category).ToList();
+                return dbcontext.Products.OrderByDescending(p=>p.Id).Skip((pageNo-1)*pageSize).Take(pageSize).Include(c=>c.Category).ToList();
 
             }
         }

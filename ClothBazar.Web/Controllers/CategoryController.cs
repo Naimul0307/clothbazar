@@ -11,7 +11,7 @@ namespace ClothBazar.Web.Controllers
 {
     public class CategoryController : Controller
     {
-        CategoriesService categoriesService = new CategoriesService();
+        //CategoriesService categoriesService = new CategoriesService();
 
         [HttpGet]
         public ActionResult Index()
@@ -23,7 +23,7 @@ namespace ClothBazar.Web.Controllers
         {
             CategorySearchViewModels models = new CategorySearchViewModels();
 
-            models.Categories = categoriesService.GetCategories();
+            models.Categories = CategoriesService.ClassObject.GetCategories();
 
             if (!string.IsNullOrEmpty(search))
             {
@@ -53,7 +53,7 @@ namespace ClothBazar.Web.Controllers
                 newCategory.ImageURL = models.ImageURL;
                 newCategory.isFeatured = models.isFeatured;
 
-                categoriesService.SaveCategory(newCategory);
+                CategoriesService.ClassObject.SaveCategory(newCategory);
 
                 return RedirectToAction("CategoryTable");
             }
@@ -63,7 +63,7 @@ namespace ClothBazar.Web.Controllers
         public ActionResult Edit(int Id)
         {
             EditCategoryViewModels models = new EditCategoryViewModels();
-            var category = categoriesService.GetCategory(Id);
+            var category = CategoriesService.ClassObject.GetCategory(Id);
             models.Id = category.Id;
             models.Name = category.Name;
             models.Description = category.Description;
@@ -76,19 +76,19 @@ namespace ClothBazar.Web.Controllers
         [HttpPost]
         public ActionResult Edit(EditCategoryViewModels models)
         {
-            var existingCategory = categoriesService.GetCategory(models.Id);
+            var existingCategory = CategoriesService.ClassObject.GetCategory(models.Id);
             existingCategory.Name = models.Name;
             existingCategory.Description = models.Description;
             existingCategory.ImageURL = models.ImageURL;
             existingCategory.isFeatured = models.isFeatured;
-            categoriesService.UpdateCategory(existingCategory);
+            CategoriesService.ClassObject.UpdateCategory(existingCategory);
             return RedirectToAction("CategoryTable");
         }
 
         [HttpPost]
         public ActionResult Delete(int Id)
         {
-            categoriesService.DeleteCategory(Id);
+            CategoriesService.ClassObject.DeleteCategory(Id);
 
             return RedirectToAction("CategoryTable");
         }

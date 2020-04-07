@@ -10,6 +10,25 @@ namespace ClothBazar.Services
 {
     public class CategoriesService
     {
+        #region Singleton
+        public static CategoriesService ClassObject
+        {
+            get
+            {
+                if (privetInMemoryObject == null)
+                {
+                    privetInMemoryObject = new CategoriesService();
+                }
+                return privetInMemoryObject;
+            }
+        }
+
+        private static CategoriesService privetInMemoryObject { get; set; }      //Singleton Design Pattern For Pagenation
+        private CategoriesService()
+        {
+
+        }
+        #endregion
         public Category GetCategory(int Id)
         {
             using (var dbcontext = new CBContext())

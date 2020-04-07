@@ -7,9 +7,11 @@ using System.Web;
 namespace ClothBazar.Web.ViewModel
 {
     public class ProductSearchViewModels
-    {
+    { 
+        public int PageNo { get; set; }
         public List<Product> Products { get; set; }
         public string SearchTerm { get; set; }
+   
     }
     public class ProductViewModels
     {

@@ -63,6 +63,7 @@
                         </td>
                     </tr>
                 }
+
             }
             else
             {
@@ -73,7 +74,33 @@
         </tbody>
     </table>
 
+    <div>
+        @if(Model.PageNo != 1)
+       
+        {
+            <button class="pageButtons" data-pageNo="@(Model.PageNo-1)">Previous</button>
+        }
+        <button class="pageButtons" data-pageNo="@(Model.PageNo+1)">Next</button>
+    </div>
+
 </div>
+
+<script>
+    $(".pageButtons").click(function () {
+        $.ajax({
+            url: "/Product/ProductTable",
+            data: {
+                pageNo: $(this).attr("data-pageNo")
+            }
+        })
+            .done(function (resposen) {
+                $("#tableContiner").html(resposen);
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("Fail");
+            });
+    });
+</script>
 
 <script>
     $("#searchBtn").click(function () {
@@ -161,7 +188,7 @@
                             alert("Fail");
                         });
                 }
-               
+
             });
         //var confirmDelete = confirm("Are Want Delete This Product?")
         //if (confirmDelete)
