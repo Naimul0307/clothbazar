@@ -45,8 +45,14 @@
                 </div>
             </div>
         </div>
-
-        <button id="updateBtn" class="form-control btn btn-danger" type="button">Update</button>
+          <div class="row">
+              <div class="col-md-4"> 
+                  <button id="updateBtn" class="form-control btn btn-danger" type="button">Update</button>
+              </div>
+               <div class="col-md-4">
+                   <button id="cancelBtn" class="form-control btn btn-danger" type="button">Cancel</button
+               </div>
+          </div>
     </form>
 </div>
 
@@ -62,7 +68,7 @@
         }
         $.ajax({
             type: 'POST',
-            url: '/Shared/UploadImage',
+            url: "@Url.Action("UploadImage", "Shared")",//'/Shared/UploadImage',
             dataType: 'json',
             data: formData,
             contentType: false,
@@ -79,18 +85,29 @@
                 alert("FAIL");
             });
     });
+
     $("#updateBtn").click(function () {
         $.ajax({
             type: 'POST',
-            url: '/Category/Edit',
+            url: "@Url.Action("Edit", "Category")",//'/Category/Edit',
             data: $("#editCategory").serialize()
         })
             .done(function (response) {
                 $("#tableContiner").html(response);
                 $("#actionContainer").html("");
+                focusAction("tableContiner");
             })
             .fail(function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("FAIL");
             });
     });
 </script> 
+
+<script>
+    $("#cancelBtn").click(function () {
+
+        $("#actionContainer").html("");
+        focusAction("tableContiner");
+    });
+
+</script>

@@ -30,8 +30,14 @@
                         <label>Price</label>
                         <input name="Price" class="form-control" />
                     </div>
-                    <button class="form-control btn btn-danger" type="button" id="saveBtn">Save</button>
-
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="form-control btn btn-danger" type="button" id="saveBtn">Save</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="form-control btn btn-danger" type="button" id="cancelBtn">Cancel</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
@@ -48,9 +54,18 @@
             .done(function (resposen) {
                 $("#tableContiner").html(resposen);
                 $("#actionContainer").html("");
+                focusAction("tableContiner");
             })
             .fail(function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("Fail");
             });
+    });
+</script>
+
+<script>
+    $("#cancelBtn").click(function () {
+
+           $("#actionContainer").html("");
+           focusAction("tableContiner");
     });
 </script>

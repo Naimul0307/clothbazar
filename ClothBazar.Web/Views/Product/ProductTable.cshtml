@@ -16,10 +16,13 @@
                 <div class="form-group">
                     <label>Action</label>
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <button class="form-control btn btn-danger" type="button" id="searchBtn">Search</button>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-4">
+                            <button class="form-control btn btn-danger" type="button" id="resetBtn">Reset</button>
+                        </div>
+                        <div class="col-md-4">
                             <button class="form-control btn btn-danger" type="button" id="newBtn">New</button>
                         </div>
                     </div>
@@ -32,10 +35,10 @@
     <table class="table table-striped table-bordered table-hover">
         <thead>
             <tr>
-                <td>Product Name</td>
-                <td>Category</td>
-                <td>Price</td>
-                <td class="wrap-td">Actions</td>
+                <th class="font-weight-bold">Product Name</th>
+                <th class="font-weight-bold">Category</th>
+                <th class="font-weight-bold"> Price</th>
+                <th class="font-weight-bold wrap-td">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -88,7 +91,7 @@
 <script>
     $(".pageButtons").click(function () {
         $.ajax({
-            url: "/Product/ProductTable",
+            url: "@Url.Action("ProductTable", "Product")",//"/Product/ProductTable",
             data: {
                 pageNo: $(this).attr("data-pageNo")
             }
@@ -108,7 +111,27 @@
 
         $.ajax({
             type: "Get",
-            url: "/Product/ProductTable",
+            url: "@Url.Action("ProductTable", "Product")",//"/Product/ProductTable",
+            data: {
+                search: searchValue
+            }
+        })
+            .done(function (resposen) {
+                $("#tableContiner").html(resposen);
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("Fail");
+            });
+    });
+</script>
+
+<script>
+    $("#resetBtn").click(function () {
+        var searchValue = "";
+
+        $.ajax({
+            type: "Get",
+            url: "@Url.Action("ProductTable", "Product")",//"/Product/ProductTable",
             data: {
                 search: searchValue
             }
@@ -126,12 +149,12 @@
     $("#newBtn").click(function () {
         $.ajax({
             type: "Get",
-            url: "/Product/Create",
+            url: "@Url.Action("Create", "Product")",//"/Product/Create",
         })
             .done(function (resposen) {
                 $("#actionContainer").html(resposen);
 
-                focusAction();
+                focusAction("actionContainer");
             })
             .fail(function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("Fail");
@@ -143,7 +166,7 @@
     $(".editBtn").click(function () {
         $.ajax({
             type: "Get",
-            url: "/Product/Edit",
+            url: "@Url.Action("Edit", "Product")",//"/Product/Edit",
             data: {
                 Id: $(this).attr("data-id")
             }
@@ -151,7 +174,7 @@
         })
             .done(function (resposen) {
                 $("#actionContainer").html(resposen);
-                focusAction();
+                focusAction("actionContainer");
             })
             .fail(function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("Fail");
@@ -172,7 +195,7 @@
 
                     $.ajax({
                         type: "Post",
-                        url: "/Product/Delete",
+                        url: "@Url.Action("Delete", "Product")",//"/Product/Delete",
                         data: {
                             Id: $(this).attr("data-id")
                         }
@@ -218,9 +241,4 @@
         alert("Product added to cart");
     });
 
-    function focusAction() {
-        $('html, body').animate({
-            scrollTop: $("#actionContainer").offset().top - 100
-        }, 1000);
-    }
 </script>

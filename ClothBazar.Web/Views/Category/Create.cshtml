@@ -24,29 +24,37 @@
                         <input id="ImageURL" name="ImageURL" type="hidden" />
                         <input class="form-control" id="imageUplode" name="image" type="file" accept=" .png , .jpg" />
                     </div>
-                        <div class="form-group">
-                            <label>Is Featured ?</label>
-                            <div class="input-group">
-                                <div class="radio form-control">
-                                    <label>
-                                         <input  type="radio" name="isFeatured" value="True" />True
-                                    </label> 
-                                </div>
-                                <div class="radio form-control">
-                                    <label>
-                                        <input  type="radio" name="isFeatured" value="False" />False
-                                    </label>
-                                </div>
+                    <div class="form-group">
+                        <label>Is Featured ?</label>
+                        <div class="input-group">
+                            <div class="radio form-control">
+                                <label>
+                                    <input type="radio" name="isFeatured" value="True" />True
+                                </label>
+                            </div>
+                            <div class="radio form-control">
+                                <label>
+                                    <input type="radio" name="isFeatured" value="False" />False
+                                </label>
                             </div>
                         </div>
                     </div>
+                </div>
                 <div class="col-md-4">
                     <div class="thumb">
                         <img class="img-thumbnail img-fluid" id="categoryImage" src="@imageURL" />
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <button class="form-control btn btn-danger" type="button" id="saveBtn">Save</button>
                 </div>
-                <button class="form-control btn btn-danger" id="saveBtn" type="button">Save</button>
+                <div class="col-md-4">
+                    <button class="form-control btn btn-danger" type="button" id="cancelBtn">Cancel</button>
+                </div>
+            </div>
+
         </form>
     </div>
 
@@ -65,7 +73,7 @@
 
         $.ajax({
             type: "Post",
-            url: "/Shared/UploadImage",
+            url: "@Url.Action("UploadImage", "Shared")", //"/Shared/UploadImage",
             data: formData,
             dataType: "Json",
             contentType: false,
@@ -86,15 +94,24 @@
     $("#saveBtn").click(function () {
         $.ajax({
             type: 'POST',
-            url: '/Category/Create',
+            url: "@Url.Action("Create", "Category")", //'/Category/Create',
             data: $("#createCategory").serialize()
         })
             .done(function (response) {
                 $("#tableContiner").html(response);
                 $("#actionContainer").html("");
+                focusAction("tableContiner");
             })
             .fail(function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("FAIL");
             });
+    });
+</script>
+
+<script>
+    $("#cancelBtn").click(function () {
+
+        $("#actionContainer").html("");
+        focusAction("tableContiner");
     });
 </script>

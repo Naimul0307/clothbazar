@@ -10,22 +10,32 @@ namespace ClothBazar.Services
 {
     public class ConfigurationsService
     {
-        //private static ConfigurationsService ClassObject { 
-        //    get{
-        //        if (privetInMemoryObject == null) privetInMemoryObject = new ConfigurationsService();
-        //        return privetInMemoryObject;
-        //    }
-        //}
-        //public static ConfigurationsService privetInMemoryObject { get; set; }      //Singleton Design Pattern For Pagenation
+        #region Singleton
+        public static ConfigurationsService ClassObject
+        {
+            get
+            {
+                if (privetInMemoryObject == null)
+                {
+                    privetInMemoryObject = new ConfigurationsService();
+                }
+                return privetInMemoryObject;
+            }
+        }
 
-        //private ConfigurationsService()
-        //{
-        //}
+        private static ConfigurationsService privetInMemoryObject { get; set; }      //Singleton Design Pattern For Pagenation
+        private ConfigurationsService()
+        {
+
+        }
+        #endregion
+ 
         public Config GetConfig(string Key)
         {
             using (var dbcontext = new CBContext())
             {
-                return dbcontext.Configurations.Where(c=>c.Key==Key).FirstOrDefault();
+                return dbcontext.Configurations.Where(c => c.Key == Key).FirstOrDefault();
+                //return dbcontext.Configurations.Find(Key);
             }
         }
     }

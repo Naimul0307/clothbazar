@@ -25,7 +25,7 @@ namespace ClothBazar.Web.Controllers
 
             models.Categories = CategoriesService.ClassObject.GetCategories();
 
-            if (!string.IsNullOrEmpty(search))
+            if (!string.IsNullOrEmpty(search)==true)
             {
                 models.SearchTerm = search;
 

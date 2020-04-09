@@ -38,10 +38,10 @@ namespace ClothBazar.Services
             }
         }
         public List<Category> GetCategories()
-        {
+        { 
             using (var dbcontext = new CBContext())
             {
-               return dbcontext.Categories.Include(p=>p.Products).ToList();
+               return dbcontext.Categories.OrderByDescending(c=>c.Id).Include(p=>p.Products).ToList();
                
             }
         }

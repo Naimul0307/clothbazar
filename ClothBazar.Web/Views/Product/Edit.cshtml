@@ -33,9 +33,14 @@
                         <label>Price</label>
                         <input class="form-control" name="Price" value="@Model.Price" />
                     </div>
-
-                    <button class="form-control btn btn-danger" type="button" id="updateBtn">Update</button>
-
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="form-control btn btn-danger" type="button" id="updateBtn">Update</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="form-control btn btn-danger" type="button" id="cancelBtn">Cancel</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>  
@@ -46,15 +51,23 @@
     $("#updateBtn").click(function () {
         $.ajax({
             type: "Post",
-            url: "/Product/Edit",
+            url: "@Url.Action("Edit","Product")",//"/Product/Edit",
             data: $("#editProduct").serialize()
         })
             .done(function (resposen) {
                 $("#tableContiner").html(resposen);
                 $("#actionContainer").html("");
+                focusAction("tableContiner");
             })
             .fail(function (XMLHttpRequest, textStatus, errorThrown) {
                 alert("Fail");
             });
+    });
+</script>
+
+<script>
+    $("#cancelBtn").click(function () {
+            $("#actionContainer").html("");
+        focusAction("tableContiner");
     });
 </script>
