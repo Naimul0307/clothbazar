@@ -15,11 +15,13 @@ namespace ClothBazar.Web.ViewModel
     }
     public class ProductViewModels
     {
+        internal object newProduct;
+
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
-
+        public string ImageURL { get; set; }
         public List<Category> AvailableCategories { get; set; }
     }
 
@@ -32,6 +34,7 @@ namespace ClothBazar.Web.ViewModel
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
 
+        public string ImageURL { get; set; }
         public List<Category> AvailableCategories { get; set; }
     }
 }

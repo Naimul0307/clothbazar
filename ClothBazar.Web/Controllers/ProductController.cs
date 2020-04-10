@@ -69,6 +69,7 @@ namespace ClothBazar.Web.Controllers
             newProduct.Name = models.Name;
             newProduct.Description = models.Description;
             newProduct.Price = models.Price;
+            newProduct.ImageURL = models.ImageURL;
             newProduct.Category = CategoriesService.ClassObject.GetCategory(models.CategoryId);
             ProductsService.ClassObject.SaveProduct(newProduct);
             return RedirectToAction("ProductTable");
@@ -85,7 +86,7 @@ namespace ClothBazar.Web.Controllers
             models.Description = product.Description;
             models.Price = product.Price;
             models.CategoryId = product.Category != null ? product.Category.Id : 0;
-
+            models.ImageURL = product.ImageURL;
             models.AvailableCategories = CategoriesService.ClassObject.GetCategories();
 
             return PartialView(models);
@@ -99,7 +100,7 @@ namespace ClothBazar.Web.Controllers
             existingProduct.Description = models.Description;
             existingProduct.Price = models.Price;
             existingProduct.Category = CategoriesService.ClassObject.GetCategory(models.CategoryId);
-
+            existingProduct.ImageURL = models.ImageURL;
             ProductsService.ClassObject.UpdateProduct(existingProduct);
 
 

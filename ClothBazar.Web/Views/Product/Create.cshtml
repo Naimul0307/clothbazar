@@ -1,47 +1,90 @@
 ﻿@model  ProductViewModels
 @{
     ViewBag.Title = "Create";
+    var imageURL = "/Content/images/system/placeholder-image.png";
 }
 
-    <div class="container">
-        <h2>Create Product</h2>
-        <hr />
-        <form id="createProduct">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <label>Category</label>
-                        <select name="CategoryId" class="form-control">
-                            @foreach (var category in Model.AvailableCategories)
-                            {
-                                <option value="@category.Id">@category.Name</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input name="Name" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label>Description</label>
-                        <input name="Description" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <label>Price</label>
-                        <input name="Price" class="form-control" />
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button class="form-control btn btn-danger" type="button" id="saveBtn">Save</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="form-control btn btn-danger" type="button" id="cancelBtn">Cancel</button>
-                        </div>
-                    </div>
+<div class="container">
+    <h2>Create Product</h2>
+    <hr />
+    <form id="createProduct">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label>Category</label>
+                    <select name="CategoryId" class="form-control">
+                        @foreach (var category in Model.AvailableCategories)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Name</label>
+                    <input name="Name" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <input name="Description" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Price</label>
+                    <input name="Price" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Image</label>
+                    <input type="hidden" id="ImageURL" name="ImageURL" />
+                    <input class="form-control" id="imageUpload" name="Image" type="file" accept=".png, .jpg" />
                 </div>
             </div>
-        </form>
+            <div class="col-md-4">
+                <div class="thumb">
+                    <img class="img-thumbnail img-fluid" id="productImage" src="@imageURL" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button class="form-control btn btn-danger" type="button" id="saveBtn">Save</button>
+            </div>
+            <div class="col-md-4">
+                <button class="form-control btn btn-danger" type="button" id="cancelBtn">Cancel</button>
+            </div>
+        </div>
+    </form>
 </div>
+
+@*Usin Ajax to save Image*@
+<script>
+	$("#imageUpload").change(function () {
+		var element = this;
+		var formData = new FormData();
+		var totalFiles = element.files.length;
+		for (var i = 0; i < totalFiles; i++) {
+			var file = element.files[i];
+			formData.append("Photo", file);
+		}
+		$.ajax({
+			type: 'POST',
+			url: '@Url.Action("UploadImage", "Shared")',
+			dataType: 'json',
+			data: formData,
+			contentType: false,
+			processData: false
+		})
+        .done(function (response) {
+        	console.log(response);
+        	if (response.Success) {
+        		$("#ImageURL").val(response.ImageURL);
+        		$("#productImage").attr("src", response.ImageURL);
+        	}
+        })
+        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+        	alert("FAIL");
+        });
+    });
+</script>
 
 @*Usin Ajax to save data*@
 <script>
@@ -65,7 +108,7 @@
 <script>
     $("#cancelBtn").click(function () {
 
-           $("#actionContainer").html("");
-           focusAction("tableContiner");
+        $("#actionContainer").html("");
+        focusAction("tableContiner");
     });
 </script>
