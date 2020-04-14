@@ -1,6 +1,7 @@
 ﻿using ClothBazar.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -15,10 +16,15 @@ namespace ClothBazar.Web.ViewModel
     }
     public class ProductViewModels
     {
-        internal object newProduct;
-
+        [Required]
+        [MinLength(4), MaxLength(50)]
         public string Name { get; set; }
+
+        [MaxLength(500)]
         public string Description { get; set; }
+
+        [Required]
+        [Range(1, 1000000)]
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
         public string ImageURL { get; set; }
@@ -29,8 +35,16 @@ namespace ClothBazar.Web.ViewModel
     {
         public int Id { get; set; }
 
+        [Required]
+        [MinLength(4), MaxLength(50)]
+
         public string Name { get; set; }
+
+        [MaxLength(500)]
         public string Description { get; set; }
+
+        [Required]
+        [Range(1, 1000000)]
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
 

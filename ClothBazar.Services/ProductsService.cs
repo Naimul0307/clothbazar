@@ -50,7 +50,7 @@ namespace ClothBazar.Services
 
         public List<Product> GetProducts(int pageNo)
         {
-            int pageSize = 5;
+            int pageSize = 5; /*int.Parse(ConfigurationsService.ClassObject.GetConfig("ListingPageSize").Value);*/
 
             using (var dbcontext = new CBContext())
             {

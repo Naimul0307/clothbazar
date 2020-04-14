@@ -37,12 +37,49 @@ namespace ClothBazar.Services
 
             }
         }
-        public List<Category> GetCategories()
+        public int GetCategoriesCount(string search)
+        {
+            using (var dbcontext = new CBContext())
+            {
+                if (!string.IsNullOrEmpty(search) == true)
+                {
+                    return dbcontext.Categories.Where(c => c.Name != null && c.Name.ToLower()
+                    .Contains(search.ToLower()))
+                    .Count();
+                }
+                else
+                {
+                    return dbcontext.Categories.Count();
+                }
+        }
+    }
+        public List<Category> GetCategories(string search, int pageNo)
+        {
+            int pageSize = 3;
+            using (var dbcontext = new CBContext())
+            {
+                if (!string.IsNullOrEmpty(search) == true)
+                {
+                    return dbcontext.Categories.Where(c => c.Name != null && c.Name.ToLower()
+                    .Contains(search.ToLower()))
+                    .OrderByDescending(c => c.Id)
+                    .Skip((pageNo - 1) * pageSize)
+                    .Take(pageSize)
+                    .Include(p => p.Products).ToList();
+                }
+
+                return dbcontext.Categories.OrderByDescending(c => c.Id)
+                    .Skip((pageNo-1)*pageSize)
+                    .Take(pageSize)
+                    .Include(p => p.Products).ToList();
+            }
+        }
+        public List<Category> GetAllCategories()
         { 
             using (var dbcontext = new CBContext())
             {
-               return dbcontext.Categories.OrderByDescending(c=>c.Id).Include(p=>p.Products).ToList();
-               
+                //return dbcontext.Categories.OrderByDescending(c=>c.Id).Include(p=>p.Products).ToList();
+                return dbcontext.Categories.ToList();
             }
         }
         public List<Category> GetFeaturedCategories()

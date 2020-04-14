@@ -19,20 +19,26 @@ namespace ClothBazar.Web.Controllers
             return View();
         }
 
-        public ActionResult CategoryTable(string search)
+        public ActionResult CategoryTable(string search , int? pageNo)
         {
             CategorySearchViewModels models = new CategorySearchViewModels();
 
-            models.Categories = CategoriesService.ClassObject.GetCategories();
+            models.SearchTerm = search;
 
-            if (!string.IsNullOrEmpty(search)==true)
+            pageNo = pageNo.HasValue ? pageNo.Value > 0 ? pageNo.Value : 1 : 1;
+
+            var totalRecords = CategoriesService.ClassObject.GetCategoriesCount(search);
+            models.Categories = CategoriesService.ClassObject.GetCategories(search,pageNo.Value);
+
+            if (models.Categories != null)
             {
-                models.SearchTerm = search;
-
-                models.Categories = models.Categories.Where(p => p.Name != null && p.Name.ToLower().Contains(search.ToLower())).ToList();
+                models.Pager = new Pager(totalRecords, pageNo, 3);
+                return PartialView("CategoryTable", models);
             }
-
-            return PartialView("CategoryTable", models);
+            else
+            {
+                return HttpNotFound();
+            }
         }
         // GET: Category
         [HttpGet]
@@ -45,8 +51,8 @@ namespace ClothBazar.Web.Controllers
         [HttpPost]
         public ActionResult Create(CategoryViewModels models)
         {
+            if(ModelState.IsValid)
             {
-
                 var newCategory = new Category();
                 newCategory.Name = models.Name;
                 newCategory.Description = models.Description;
@@ -56,6 +62,10 @@ namespace ClothBazar.Web.Controllers
                 CategoriesService.ClassObject.SaveCategory(newCategory);
 
                 return RedirectToAction("CategoryTable");
+            }
+            else
+            {
+                return new HttpStatusCodeResult(500);
             }
         }
 
