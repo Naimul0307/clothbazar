@@ -90,8 +90,36 @@
                 alert("Fail");
             });
     });
+</script>
 
+<script>
+    $("#createCategory").validate({
+        rules: {
+            Name: {
+                required: true,
+                minlength: 4,
+                maxlength: 50
+            },
+            Description: {
+                maxlength: 500
+            }
+        },
+        messages: {
+            Name: {
+                required: "Nme is required",
+                minlength: "Minlength is 4",
+                maxlength:"Maxlength is 50"
+            },
+            Description: {
+                maxlenght:"Maxlength is 500"
+            }
+        }
+    });
+</script>
+
+<script>
     $("#saveBtn").click(function () {
+        if ($("#createCategory").valid()) {
             $.ajax({
                 type: 'POST',
                 url: "@Url.Action("Create", "Category")", //'/Category/Create',
@@ -111,6 +139,16 @@
                         dangerMode: true,
                     })
                 });
+        }
+        else {
+            swal({
+                title: " JS Warning",
+                text: "Please enter all requred fielsd !",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            });
+        }
     });
 </script>
 

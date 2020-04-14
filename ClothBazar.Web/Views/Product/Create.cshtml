@@ -86,22 +86,74 @@
     });
 </script>
 
+<script>
+    $("#createProduct").validate({
+        rules: {
+            Name: {
+                required: true,
+                minlength: 4,
+                maxlength: 50
+            },
+            Description: {
+                maxlength: 500
+            },
+            Price: {
+                required: true,
+                range:(1,1000000)
+            }     
+        },
+        messages: {
+            Name: {
+                required: "Name is required",
+                minlength: "Minlength is 4",
+                maxlength: "Maxlength is 50"
+            },
+            Description: {
+                maxlenght: "Maxlength is 500"
+            },
+            Price: {
+                required: "Price is Required",
+                range: "Range is 1 to 1000000"
+            }
+        }
+    });
+</script>
+
 @*Usin Ajax to save data*@
 <script>
     $("#saveBtn").click(function () {
-        $.ajax({
-            type: "Post",
-            url: "/Product/Create",
-            data: $("#createProduct").serialize()
-        })
-            .done(function (resposen) {
-                $("#tableContiner").html(resposen);
-                $("#actionContainer").html("");
-                focusAction("tableContiner");
+        if ($("#createProduct").valid()) {
+
+            $.ajax({
+                type: "Post",
+                url: "/Product/Create",
+                data: $("#createProduct").serialize()
             })
-            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
-                alert("Fail");
+                .done(function (resposen) {
+                    $("#tableContiner").html(resposen);
+                    $("#actionContainer").html("");
+                    focusAction("tableContiner");
+                })
+                .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                    swal({
+                        title: "Warning",
+                        text: "Please enter all requred fielsd !",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                });
+        }
+        else {
+            swal({
+                title: " JS Warning",
+                text: "Please enter all requred fielsd !",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
             });
+        }
+
     });
 </script>
 

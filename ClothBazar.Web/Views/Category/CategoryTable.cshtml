@@ -70,13 +70,13 @@
     <div>
         @if (Model.Pager != null)
         {
-            if (Model.Pager.CurrentPage > 1 )
+            if (Model.Pager.CurrentPage > 1)
             {
                 <button class="pageButtons" data-pageNo="1">First</button>
                 <button class="pageButtons" data-pageNo="@(Model.Pager.CurrentPage-1)">Previous</button>
             }
 
-            for(var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+            for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
             {
                 string activeClass = Model.Pager.CurrentPage == page ? "active bg-info" : string.Empty;
 
@@ -116,7 +116,7 @@
 
         $.ajax({
             type: "Get",
-            url: "@Url.Action("ProductTable", "Product")",//"/Product/ProductTable",
+            url: "@Url.Action("CategoryTable", "Category")",//"/Category/CategoryTable",
             data: {
                 search: searchValue
             }
@@ -131,6 +131,7 @@
 </script>
 
 <script>
+
     $("#searchBtn").click(function () {
         var searchValue = $("#searchTxt").val();
 
@@ -147,8 +148,10 @@
                 alert("FAIL");
             });
     });
+</script>
 
-    $("#newBtn").click(function () {
+<script>
+        $("#newBtn").click(function () {
         $.ajax({
             url:"@Url.Action("Create","Category")", //'/Category/Create',
         })
@@ -161,8 +164,10 @@
                 alert("FAIL");
             });
     });
+</script>
 
-    $(".editBtn").click(function () {
+<script>
+          $(".editBtn").click(function () {
         $.ajax({
             url: "@Url.Action("Edit","Category")", //'/Category/Edit',
             data: {
@@ -177,7 +182,9 @@
                 alert("FAIL");
             });
     });
+</script>
 
+<script>
      $(".deleteBtn").click(function () {
 
         swal({
