@@ -57,6 +57,31 @@ namespace ClothBazar.Services
                 return dbcontext.Products.OrderByDescending(p=>p.Id).Skip((pageNo-1)*pageSize).Take(pageSize).Include(c=>c.Category).ToList();
             }
         }
+
+        public List<Product> GetProducts(int pageNo, int pageSize)
+        {
+            using (var dbcontext = new CBContext())
+            {
+                return dbcontext.Products.OrderByDescending(p => p.Id).Skip((pageNo - 1) * pageSize).Take(pageSize).Include(c => c.Category).ToList();
+            }
+        }
+
+        public List<Product> GetLatestProducts(int numberofProducts)
+        {
+
+            using (var dbcontext = new CBContext())
+            {
+                return dbcontext.Products.OrderByDescending(p => p.Id).Take(numberofProducts).Include(c => c.Category).ToList();
+            }
+        }
+
+        public List<Product> GetProductsByCategory(int CategoryId, int pageSize)
+        {
+            using (var dbcontext = new CBContext())
+            {
+                return dbcontext.Products.Where(c=>c.Category.Id==CategoryId).OrderByDescending(p => p.Id).Take(pageSize).Include(c => c.Category).ToList();
+            }
+        }
         public void SaveProduct(Product product)
         {
             using (var dbcontext = new CBContext())

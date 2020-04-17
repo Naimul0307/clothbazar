@@ -106,6 +106,17 @@ namespace ClothBazar.Web.Controllers
 
             return RedirectToAction("ProductTable");
         }
+
+        [HttpGet]
+        public ActionResult Details(int Id)
+        {
+            ProductViewModel models = new ProductViewModel();
+
+            models.Product = ProductsService.ClassObject.GetProduct(Id);
+
+            return View(models);
+        }
+
         [HttpPost]
         public ActionResult Delete(int Id)
         {
