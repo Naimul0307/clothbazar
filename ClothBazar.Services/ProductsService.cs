@@ -23,13 +23,71 @@ namespace ClothBazar.Services
                 return privetInMemoryObject;
             }
         }
-
+        
         private static ProductsService privetInMemoryObject { get; set; }      //Singleton Design Pattern For Pagenation
+
         private ProductsService()
         {
 
         }
         #endregion
+
+        //For Shop Conltroller
+        public List<Product> SearchProducts(string searchTerm, int? minimumPrice, int? maximumPrice, int? categoryId, int? sortBy)
+        {
+            using (var dbcontext = new CBContext())
+            {
+                var products = dbcontext.Products.ToList();
+
+                if (categoryId.HasValue)
+                {
+                    products = products.Where(c => c.Id == categoryId.Value).ToList();
+                }
+
+                if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    products = products.Where(p => p.Name.ToLower().Contains(searchTerm.ToLower())).ToList();
+                }
+
+                if (minimumPrice.HasValue)
+                {
+                    products = products.Where(p => p.Price >= minimumPrice.Value).ToList();
+                }
+
+                if (maximumPrice.HasValue)
+                {
+                    products = products.Where(p => p.Price <= maximumPrice.Value).ToList();
+                }
+                if(sortBy.HasValue)
+                {
+                    switch (sortBy)
+                    {
+                        case 2:
+                            products = products.OrderByDescending(p => p.Id).ToList();
+                            break;
+                        case 3:
+                            products = products.OrderBy(p => p.Price).ToList();
+                            break;
+                        case 4:
+                            products = products.OrderByDescending(p => p.Price).ToList();
+                            break;
+                        default:
+                            products = products.OrderByDescending(p => p.Id).ToList();
+                            break;
+
+                    }
+                }
+                return products;
+            }
+        }
+
+        public int GetMaximumPrice()
+        {
+            using (var dbcontext = new CBContext())
+            {
+              return (int)(dbcontext.Products.Max(p => p.Price));
+            }
+        }
         public Product GetProduct(int Id)
         {
             using (var dbcontext = new CBContext())

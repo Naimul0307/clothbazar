@@ -11,6 +11,18 @@ namespace ClothBazar.Web.Controllers
   
     public class ShopController : Controller
     {
+      public ActionResult Index(string searchTerm , int? minimumPrice, int? maximumPrice, int? categoryId,int? sortBy)
+        {
+            ShopViewModels models = new ShopViewModels();
+
+            models.FeaturedCategories = CategoriesService.ClassObject.GetFeaturedCategories();
+            models.MaximumPrice = ProductsService.ClassObject.GetMaximumPrice();
+
+            models.Products = ProductsService.ClassObject.SearchProducts(searchTerm,minimumPrice,maximumPrice,categoryId,sortBy);
+            models.SortBy = sortBy;
+            return View(models);
+        }
+
       //ProductsService productsService = new ProductsService();
         public ActionResult Checkout()
         {
