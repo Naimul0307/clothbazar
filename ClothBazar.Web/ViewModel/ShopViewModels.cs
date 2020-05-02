@@ -18,5 +18,12 @@ namespace ClothBazar.Web.ViewModel
         public List<Category> FeaturedCategories { get; set; }
         public List<Product> Products { get; set; }
         public int? SortBy { get;  set; }
+        public int? CategoryId { get; set; }
     }
+
+    public class FilterProductsViewModels
+    {
+        public List<Product> Products { get; set; }
+    }
+
 }

@@ -18,12 +18,21 @@ namespace ClothBazar.Web.Controllers
             models.FeaturedCategories = CategoriesService.ClassObject.GetFeaturedCategories();
             models.MaximumPrice = ProductsService.ClassObject.GetMaximumPrice();
 
-            models.Products = ProductsService.ClassObject.SearchProducts(searchTerm,minimumPrice,maximumPrice,categoryId,sortBy);
+            models.Products = ProductsService.ClassObject.SearchProducts(searchTerm, minimumPrice, maximumPrice, categoryId, sortBy);
             models.SortBy = sortBy;
+            models.CategoryId = categoryId;
             return View(models);
         }
 
-      //ProductsService productsService = new ProductsService();
+        public ActionResult FilterProducts(string searchTerm, int? minimumPrice, int? maximumPrice, int? categoryId, int? sortBy)
+        {
+            FilterProductsViewModels models = new FilterProductsViewModels();
+
+            models.Products = ProductsService.ClassObject.SearchProducts(searchTerm, minimumPrice, maximumPrice, categoryId, sortBy);
+       
+            return PartialView(models);
+        }
+
         public ActionResult Checkout()
         {
             CheckoutViewModels models = new CheckoutViewModels();

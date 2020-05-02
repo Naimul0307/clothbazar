@@ -52,13 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CBContext.cs" />
-    <Compile Include="Migrations\202004111537361_Version!.cs" />
-    <Compile Include="Migrations\202004111537361_Version!.designer.cs">
-      <DependentUpon>202004111537361_Version!.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004141309103_Version1.cs" />
-    <Compile Include="Migrations\202004141309103_Version1.designer.cs">
-      <DependentUpon>202004141309103_Version1.cs</DependentUpon>
+    <Compile Include="Migrations\202005021316230_Version1.cs" />
+    <Compile Include="Migrations\202005021316230_Version1.designer.cs">
+      <DependentUpon>202005021316230_Version1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,11 +70,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202004111537361_Version!.resx">
-      <DependentUpon>202004111537361_Version!.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004141309103_Version1.resx">
-      <DependentUpon>202004141309103_Version1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202005021316230_Version1.resx">
+      <DependentUpon>202005021316230_Version1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

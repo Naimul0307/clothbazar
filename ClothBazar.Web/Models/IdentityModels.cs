@@ -21,7 +21,7 @@ namespace ClothBazar.Web.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("CBConnection", throwIfV1Schema: false)
         {
         }
 
