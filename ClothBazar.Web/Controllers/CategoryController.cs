@@ -21,6 +21,7 @@ namespace ClothBazar.Web.Controllers
 
         public ActionResult CategoryTable(string search , int? pageNo)
         {
+            var pageSize = ConfigurationsService.ClassObject.PageSize();
             CategorySearchViewModels models = new CategorySearchViewModels();
 
             models.SearchTerm = search;
@@ -28,11 +29,11 @@ namespace ClothBazar.Web.Controllers
             pageNo = pageNo.HasValue ? pageNo.Value > 0 ? pageNo.Value : 1 : 1;
 
             var totalRecords = CategoriesService.ClassObject.GetCategoriesCount(search);
-            models.Categories = CategoriesService.ClassObject.GetCategories(search,pageNo.Value);
+            models.Categories = CategoriesService.ClassObject.GetCategories(search,pageNo.Value,pageSize);
 
             if (models.Categories != null)
             {
-                models.Pager = new Pager(totalRecords, pageNo, 3);
+                models.Pager = new Pager(totalRecords, pageNo, pageSize);
                 return PartialView("CategoryTable", models);
             }
             else

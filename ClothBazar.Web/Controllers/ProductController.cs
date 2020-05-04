@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using System.Web.Mvc;                                     
 
 namespace ClothBazar.Web.Controllers
 {
@@ -21,35 +21,17 @@ namespace ClothBazar.Web.Controllers
 
         public ActionResult ProductTable(string search, int ? pageNo)
         {
+            var pageSize = ConfigurationsService.ClassObject.PageSize();
            
             ProductSearchViewModels models = new ProductSearchViewModels();
 
-            models.PageNo = pageNo.HasValue ? pageNo.Value> 0 ? pageNo.Value :1 : 1;           //For Pagenation
+            models.SearchTerm = search;
 
-            //if (pageNo.HasValue)
-            //{
-            //    if (pageNo.Value > 0)
-            //    {
-            //        models.PageNo = pageNo.Value;
-            //    }
-            //    else
-            //    {
-            //        models.PageNo = 1;
-            //    }
-            //}
-            //else
-            //{
-            //    models.PageNo = 1;
-            //}
+            pageNo = pageNo.HasValue ? pageNo.Value> 0 ? pageNo.Value :1 : 1;           //For Pagenation
 
-            models.Products = ProductsService.ClassObject.GetProducts(models.PageNo);
-
-            if (string.IsNullOrEmpty(search)==false)
-            {
-                models.SearchTerm = search;
-                models.Products = models.Products.Where(p => p.Name != null && p.Name.ToLower().Contains(search.ToLower())).ToList();
-            }
-
+            var totalRecords = ProductsService.ClassObject.GetProductsCount(search);
+            models.Products = ProductsService.ClassObject.GetProducts(search, pageNo.Value,pageSize);
+            models.Pager = new Pager(totalRecords, pageNo, pageSize);
             return PartialView(models);
         }
 
@@ -99,8 +81,15 @@ namespace ClothBazar.Web.Controllers
             existingProduct.Name = models.Name;
             existingProduct.Description = models.Description;
             existingProduct.Price = models.Price;
-            existingProduct.Category = CategoriesService.ClassObject.GetCategory(models.CategoryId);
-            existingProduct.ImageURL = models.ImageURL;
+
+            existingProduct.Category = null; //make it null because the referency key is changed
+            existingProduct.CategoryId = models.CategoryId;
+            
+           // do not update if imageUrl is empty
+            if (!string.IsNullOrEmpty(models.ImageURL))
+            {
+                existingProduct.ImageURL = models.ImageURL;
+            }
             ProductsService.ClassObject.UpdateProduct(existingProduct);
 
 

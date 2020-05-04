@@ -78,12 +78,26 @@
     </table>
 
     <div>
-        @if(Model.PageNo != 1)
-       
+        @if (Model.Pager != null && Model.Pager.TotalPages > 1)
         {
-            <button class="pageButtons" data-pageNo="@(Model.PageNo-1)">Previous</button>
+            if (Model.Pager.CurrentPage > 1)
+            {
+                <button class="pageButtons" data-pageNo="1">First</button>
+                <button class="pageButtons" data-pageNo="@(Model.Pager.CurrentPage-1)">Previous</button>
+            }
+
+            for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+            {
+                string activeClass = Model.Pager.CurrentPage == page ? "active bg-info" : string.Empty;
+
+                <button class="@activeClass pageButtons" data-pageNo="@page"> @page </button>
+            }
+            if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+            {
+                <button class="pageButtons" data-pageNo="@(Model.Pager.CurrentPage+1)">Next</button>
+                <button class="pageButtons" data-pageNo="@(Model.Pager.EndPage)">Last</button>
+            }
         }
-        <button class="pageButtons" data-pageNo="@(Model.PageNo+1)">Next</button>
     </div>
 
 </div>
@@ -93,7 +107,8 @@
         $.ajax({
             url: "@Url.Action("ProductTable", "Product")",//"/Product/ProductTable",
             data: {
-                pageNo: $(this).attr("data-pageNo")
+                pageNo: $(this).attr("data-pageNo"),
+                search: "@Model.SearchTerm"
             }
         })
             .done(function (resposen) {

@@ -29,13 +29,22 @@ namespace ClothBazar.Services
 
         }
         #endregion
- 
+
         public Config GetConfig(string Key)
         {
             using (var dbcontext = new CBContext())
             {
                 return dbcontext.Configurations.Where(c => c.Key == Key).FirstOrDefault();
                 //return dbcontext.Configurations.Find(Key);
+            }
+        }
+        public int PageSize() 
+        { 
+            using (var dbcontext = new CBContext())
+            {
+                var pageSizeConfig = dbcontext.Configurations.Find("PageSize");
+
+                return pageSizeConfig != null ? int.Parse(pageSizeConfig.Value) : 3;
             }
         }
     }

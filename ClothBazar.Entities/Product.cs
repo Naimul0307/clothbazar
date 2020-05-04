@@ -13,8 +13,8 @@ namespace ClothBazar.Entities
         [Range(1,1000000)]
         public decimal Price { get; set; }
         public virtual Category Category { get; set; }
-       
-        //public int CategoryId { get; set; }
+
+        public int CategoryId { get; set; }
         public string ImageURL { get; set; }
     }
 }

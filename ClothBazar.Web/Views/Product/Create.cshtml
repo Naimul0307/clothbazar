@@ -113,7 +113,7 @@
             },
             Price: {
                 required: "Price is Required",
-                range:"Price range 1 to 10000000 "
+                range:"Price must be with in range of 1 - 10000000"
             }
         }
     });
@@ -146,8 +146,8 @@
         }
         else {
             swal({
-                title: " JS Warning",
-                text: "Please enter all requred fielsd !",
+                title: "Warning",
+                text: "Please enter all valid data in this fielsd !",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,

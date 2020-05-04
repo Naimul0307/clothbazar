@@ -53,9 +53,8 @@ namespace ClothBazar.Services
                 }
         }
     }
-        public List<Category> GetCategories(string search, int pageNo)
+        public List<Category> GetCategories(string search, int pageNo,int pageSize)
         {
-            int pageSize = 3;
             using (var dbcontext = new CBContext())
             {
                 if (!string.IsNullOrEmpty(search) == true)
@@ -113,7 +112,9 @@ namespace ClothBazar.Services
             {
                 //dbcontext.Entry(category).State = System.Data.Entity.EntityState.Deleted;
 
-                var category = dbcontext.Categories.Find(Id);
+                var category = dbcontext.Categories.Where(c=>c.Id == Id).Include(p=>p.Products).FirstOrDefault();
+
+                dbcontext.Products.RemoveRange(category.Products); //first delete products of this category
                 dbcontext.Categories.Remove(category);
                 dbcontext.SaveChanges();
             }

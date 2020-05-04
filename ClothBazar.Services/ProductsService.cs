@@ -33,7 +33,7 @@ namespace ClothBazar.Services
         #endregion
 
         //For Shop Conltroller
-        public List<Product> SearchProducts(string searchTerm, int? minimumPrice, int? maximumPrice, int? categoryId, int? sortBy)
+        public List<Product> SearchProducts(string searchTerm, int? minimumPrice, int? maximumPrice, int? categoryId, int? sortBy,int pageNo,int pageSize)
         {
             using (var dbcontext = new CBContext())
             {
@@ -77,7 +77,53 @@ namespace ClothBazar.Services
 
                     }
                 }
-                return products;
+                return products.Skip((pageNo - 1) * pageSize).Take(pageSize).ToList();
+            }
+        }
+
+        public int SearchProductsCount(string searchTerm, int? minimumPrice, int? maximumPrice, int? categoryId, int? sortBy)
+        {
+            using (var context = new CBContext())
+            {
+                var products = context.Products.ToList();
+
+                if (categoryId.HasValue)
+                {
+                    products = products.Where(c => c.Category.Id == categoryId.Value).ToList();
+                }
+
+                if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    products = products.Where(p => p.Name.ToLower().Contains(searchTerm.ToLower())).ToList();
+                }
+
+                if (minimumPrice.HasValue)
+                {
+                    products = products.Where(p => p.Price >= minimumPrice.Value).ToList();
+                }
+
+                if (maximumPrice.HasValue)
+                {
+                    products = products.Where(p => p.Price <= maximumPrice.Value).ToList();
+                }
+
+                if (sortBy.HasValue)
+                {
+                    switch (sortBy.Value)
+                    {
+                        case 2:
+                            products = products.OrderByDescending(p => p.Id).ToList();
+                            break;
+                        case 3:
+                            products = products.OrderBy(p => p.Price).ToList();
+                            break;
+                        default:
+                            products = products.OrderByDescending(p => p.Price).ToList();
+                            break;
+                    }
+                }
+
+                return products.Count;
             }
         }
 
@@ -106,21 +152,58 @@ namespace ClothBazar.Services
             }
         }
 
-        public List<Product> GetProducts(int pageNo)
-        {
-            int pageSize = 5; /*int.Parse(ConfigurationsService.ClassObject.GetConfig("ListingPageSize").Value);*/
+        //public List<Product> GetProducts(int pageNo)
+        //{
+        //    int pageSize = 5; /*int.Parse(ConfigurationsService.ClassObject.GetConfig("ListingPageSize").Value);*/
 
-            using (var dbcontext = new CBContext())
-            {
-                return dbcontext.Products.OrderByDescending(p=>p.Id).Skip((pageNo-1)*pageSize).Take(pageSize).Include(c=>c.Category).ToList();
-            }
-        }
+        //    using (var dbcontext = new CBContext())
+        //    {
+        //        return dbcontext.Products.OrderByDescending(p=>p.Id).Skip((pageNo-1)*pageSize).Take(pageSize).Include(c=>c.Category).ToList();
+        //    }
+        //}
 
         public List<Product> GetProducts(int pageNo, int pageSize)
         {
             using (var dbcontext = new CBContext())
             {
                 return dbcontext.Products.OrderByDescending(p => p.Id).Skip((pageNo - 1) * pageSize).Take(pageSize).Include(c => c.Category).ToList();
+            }
+        }
+
+
+        public List<Product> GetProducts(string search, int pageNo, int pageSize)
+        {
+            using (var dbcontext = new CBContext())
+            {
+                if (!string.IsNullOrEmpty(search)==true)
+                {
+                    return dbcontext.Products.Where(p => p.Name != null && p.Name.ToLower()
+                    .Contains(search.ToLower()))
+                    .OrderByDescending(p => p.Id)
+                    .Skip((pageNo - 1) * pageSize)
+                    .Take(pageSize)
+                    .Include(c => c.Category).ToList();
+                }
+
+                return dbcontext.Products.OrderByDescending(p => p.Id)
+                    .Skip((pageNo - 1) * pageSize)
+                    .Take(pageSize)
+                    .Include(c => c.Category).ToList();
+            }
+        }
+
+        public int GetProductsCount(string search)
+        {
+            using (var dbcontext = new CBContext())
+            {
+                if (!string.IsNullOrEmpty(search)==true)
+                {
+                    return dbcontext.Products.Where(p => p.Name != null && p.Name.ToLower()
+                    .Contains(search.ToLower()))
+                   .Count();
+                }
+
+                return dbcontext.Products.Count();
             }
         }
 
@@ -145,7 +228,7 @@ namespace ClothBazar.Services
             using (var dbcontext = new CBContext())
             {
 
-                dbcontext.Entry(product).State = System.Data.Entity.EntityState.Unchanged;
+               //dbcontext.Entry(product).State = System.Data.Entity.EntityState.Unchanged;
                 dbcontext.Products.Add(product);
                 dbcontext.SaveChanges();
             }
