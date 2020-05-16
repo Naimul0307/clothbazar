@@ -77,8 +77,8 @@ namespace ClothBazar.Services
         { 
             using (var dbcontext = new CBContext())
             {
-                //return dbcontext.Categories.OrderByDescending(c=>c.Id).Include(p=>p.Products).ToList();
-                return dbcontext.Categories.ToList();
+                return dbcontext.Categories.OrderByDescending(c => c.Id).Include(p => p.Products).ToList();
+               /* return dbcontext.Categories.ToList()*/;
             }
         }
         public List<Category> GetFeaturedCategories()

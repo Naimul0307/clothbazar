@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ClothBazar.Web.Code
 {
-    public enum SotByEnums
+    public enum SortByEnums
     {
         Default=1,
         Popularity=2,

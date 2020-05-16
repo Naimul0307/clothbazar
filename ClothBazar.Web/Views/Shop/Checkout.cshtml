@@ -1,28 +1,28 @@
-﻿@model CheckoutViewModels
-   
- @if(Model != null)
- {
-     if(Model.CartProducts != null && Model.CartProducts.Count > 0)
-     {
-       <div>
-           @foreach (var product in Model.CartProducts)
-           {
-               var productQuantity = Model.CartProductsIds.Where(p => p == product.Id).Count();
-               
-               <div>
-                Name: @product.Name- Priced: @product.Price -Quantity:@productQuantity  Total Price:@(product.Price*productQuantity)
-               </div>
-               <div>
-                   Total Bill:@Model.CartProducts.Sum(s => s.Price * Model.CartProductsIds.Where(p => p == s.Id).Count())
-                 
-               </div>
-           }
-       </div>
-     }
-     else
-     {
-         <div>
-             No Product In Cart.
-         </div>
-     }
- }
+﻿﻿@model CheckoutViewModels
+
+    @if (Model != null)
+    {
+        if (Model.CartProducts != null && Model.CartProducts.Count > 0)
+        {
+            <div>
+                @foreach (var product in Model.CartProducts)
+                {
+                    var productQuantity = Model.CartProductIds.Where(p => p == product.Id).Count();
+                    //totalBill = totalBill + (productQuantity * product.Price);
+                    <div>
+                        Name: @product.Name- Priced: @product.Price -Quantity:@productQuantity  Total Price:@(product.Price*productQuantity)
+                    </div>
+                    <div>
+                        Total Bill:@Model.CartProducts.Sum(s => s.Price * Model.CartProductIds.Where(p => p == s.Id).Count())
+                        @*Total Bill: @totalBill*@
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div>
+                No Product In Cart.
+            </div>
+        }
+    }

@@ -12,7 +12,6 @@ D:\My Prectise\ClothBazar.Web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.
 D:\My Prectise\ClothBazar.Web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.csproj.CopyComplete
 D:\My Prectise\ClothBazar.Web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.dll
 D:\My Prectise\ClothBazar.Web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.pdb
-D:\My Prectise\ClothBazar.Web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.Migrations.addmodel.resources
 D:\My Prectise\ClothBazar.Web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.csproj.GenerateResource.cache
 C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\bin\Debug\ClothBazar.DataBase.dll.config
 C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\bin\Debug\ClothBazar.DataBase.dll
@@ -42,8 +41,8 @@ D:\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.csproj.CoreC
 D:\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.csproj.CopyComplete
 D:\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.dll
 D:\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.pdb
-D:\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.csproj.GenerateResource.cache
-D:\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.Migrations.Version1.resources
 C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.Migrations.Version1.resources
 C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.csproj.GenerateResource.cache
-D:\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.Migrations.Version2.resources
+D:\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.Migrations.version.resources
+D:\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.csproj.GenerateResource.cache
+D:\My Prectise\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.Migrations.version.resources

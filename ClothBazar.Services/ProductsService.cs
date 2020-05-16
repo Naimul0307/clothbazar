@@ -228,7 +228,7 @@ namespace ClothBazar.Services
             using (var dbcontext = new CBContext())
             {
 
-               //dbcontext.Entry(product).State = System.Data.Entity.EntityState.Unchanged;
+                dbcontext.Entry(product.Category).State = System.Data.Entity.EntityState.Unchanged;
                 dbcontext.Products.Add(product);
                 dbcontext.SaveChanges();
             }

@@ -1,5 +1,6 @@
 ﻿using ClothBazar.Entities;
 using System;
+using ClothBazar.Web.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +10,7 @@ namespace ClothBazar.Web.ViewModel
     public class CheckoutViewModels
     {
         public List<Product> CartProducts { get; set; }
-        public List<int> CartProductsIds { get; set; }
+        public List<int> CartProductIds { get; set; }
     }
 
     public class ShopViewModels

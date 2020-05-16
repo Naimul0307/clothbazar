@@ -11,7 +11,7 @@ namespace ClothBazar.Web.Controllers
   
     public class ShopController : Controller
     {
-      public ActionResult Index(string searchTerm , int? minimumPrice, int? maximumPrice, int? categoryId,int? sortBy,int ? pageNo)
+        public ActionResult Index(string searchTerm, int? minimumPrice, int? maximumPrice, int? categoryId, int? sortBy, int? pageNo)
         {
             var pageSize = ConfigurationsService.ClassObject.PageSize();
            
@@ -52,16 +52,15 @@ namespace ClothBazar.Web.Controllers
         public ActionResult Checkout()
         {
             CheckoutViewModels models = new CheckoutViewModels();
-            var CartProductsCookie = Request.Cookies["CartProducts"];
-            if (CartProductsCookie != null)
-            {
-                //    var productIds = CartProductsCookie.Value;
-                //    var ids = productIds.Split('-');
-                //    List<int> pIds = ids.Select(x => int.Parse(x)).ToList();
-               
-               models.CartProductsIds= CartProductsCookie.Value.Split('-').Select(p => int.Parse(p)).ToList();
 
-                models.CartProducts = ProductsService.ClassObject.GetProducts(models.CartProductsIds);
+            var CartProductsCookie = Request.Cookies["CartProducts"];
+
+            if (CartProductsCookie != null && !string.IsNullOrEmpty(CartProductsCookie.Value))
+            {
+
+                models.CartProductIds = CartProductsCookie.Value.Split('-').Select(x => int.Parse(x)).ToList();
+
+                models.CartProducts = ProductsService.ClassObject.GetProducts(models.CartProductIds);
             }
             return View(models);
         }
