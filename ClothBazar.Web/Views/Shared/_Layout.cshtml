@@ -69,6 +69,12 @@
                                 @User.Identity.Name
                             </li>
                         }
+                        else
+                        {
+                    <li class="box-login">
+                        <a class="icon_login" href="@Url.Action("Login","Account")"></a>
+                    </li>
+                        }
                         <li class="box-cart nav-top-cart-wrapper">
                             <a class="icon_cart nav-cart-trigger active" href="@Url.Action("Checkout","Shop")"><span id="cartProductsCount">0</span></a>
                         </li>
@@ -81,42 +87,15 @@
                                 </li>
                                 <li>
                                     <a href="@Url.Action("Index","Shop")">SHOP</a>
-                                    <ul class="submenu">
-                                        <li>
+                                </li>
+                                    <li>
                                             <a href="@Url.Action("Checkout","Shop")">CHECKOUT</a>
                                         </li>
-                                        <li>
-                                            <a href="shop-detail-des.html">Shop Details</a>
-                                            <ul class="submenu">
-                                                <li><a href="shop-detail-des.html">Details Description</a></li>
-                                                <li><a href="shop-detail-exter.html">Details External</a></li>
-                                                <li><a href="shop-detail-option.html">Details Options</a></li>
-                                                <li><a href="shop-detail-fix.html">Details Fix</a></li>
-                                                <li><a href="shop-detail-zoom.html">Details Zoom</a></li>
-                                                <li><a href="shop-detail-group.html">Details Grouped</a></li>
-                                                <li><a href="shop-detail-video.html">Details Video</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+                                <li>
+                                    <a href="@Url.Action("Index","Category")">CATEGORY</a>
                                 </li>
                                 <li>
-                                    <a href="coming-soon.html">PAGE</a>
-                                    <ul class="submenu">
-                                        <li><a href="coming-soon.html">Coming Soon</a></li>
-                                        <li><a href="404.html"> Error 404</a></li>
-                                        <li><a href="faqs.html">FAQs</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="blog-list.html">BLOG</a>
-                                    <ul class="submenu">
-                                        <li><a href="blog-list.html">Blog List Full</a></li>
-                                        <li><a href="blog-list-1.html">Blog list Slide 1</a></li>
-                                        <li><a href="blog-list-2.html">Blog list Slide 2</a></li>
-                                        <li><a href="blog-grid.html">Blog Gird Full</a></li>
-                                        <li><a href="blog-grid-1.html">Blog Gird Slide</a></li>
-                                        <li><a href="blog-detail.html">Blog Details</a></li>
-                                    </ul><!-- /.submenu -->
+                                    <a href="@Url.Action("Index","Product")">PRODUCT</a>
                                 </li>
                                 <li>
                                     <a href="contact.html">CONTACT</a>

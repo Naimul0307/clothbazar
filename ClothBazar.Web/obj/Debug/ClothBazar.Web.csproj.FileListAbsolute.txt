@@ -346,3 +346,5 @@ D:\clothbazar.web\ClothBazar.Web\obj\Debug\ClothBazar.Web.csproj.CoreCompileInpu
 D:\clothbazar.web\ClothBazar.Web\obj\Debug\ClothBazar.Web.csproj.CopyComplete
 D:\clothbazar.web\ClothBazar.Web\obj\Debug\ClothBazar.Web.dll
 D:\clothbazar.web\ClothBazar.Web\obj\Debug\ClothBazar.Web.pdb
+D:\My Prectise\ClothBazar.Web\ClothBazar.Web\obj\Debug\ClothBazar.Web.Migrations.AddNewPropertyUser.resources
+D:\My Prectise\ClothBazar.Web\ClothBazar.Web\obj\Debug\ClothBazar.Web.csproj.GenerateResource.cache

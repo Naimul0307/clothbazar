@@ -1,12 +1,5 @@
 ﻿@model  ClothBazar.Web.ViewModel.HomeViewModels
 
-@{
-    ViewBag.Title = "Home Page";
-    var firstCategory = Model.FeaturedCategories[0];
-    var secondCategory = Model.FeaturedCategories[1];
-    var thirdCategory = Model.FeaturedCategories[2];
-    var fourthCategory = Model.FeaturedCategories[3];
-}
 <!-- SLIDER -->
 <div class="rev_slider_wrapper fullwidthbanner-container">
     <div id="rev-slider1" class="rev_slider fullwidthabanner">
@@ -185,6 +178,14 @@
     </div>
 </div>
 <!-- END SLIDER -->
+
+ @if (Model.FeaturedCategories != null & Model.FeaturedCategories.Count >= 4)
+ {
+     ViewBag.Title = "Home Page";
+     var firstCategory = Model.FeaturedCategories[0];
+     var secondCategory = Model.FeaturedCategories[1];
+     var thirdCategory = Model.FeaturedCategories[2];
+     var fourthCategory = Model.FeaturedCategories[3];
 <!-- IMAGE BOX -->
 <section class="flat-row row-image-box">
     <div class="container">
@@ -267,6 +268,8 @@
     </div><!-- /.container -->
 </section>
 <!-- END IMAGE BOX -->
+ }
+
 <!-- PRODUCT NEW -->
 <section class="flat-row row-product-new">
     <div class="container">

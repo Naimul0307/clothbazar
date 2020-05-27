@@ -1,5 +1,7 @@
 ﻿using ClothBazar.Services;
 using ClothBazar.Web.ViewModel;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,33 @@ namespace ClothBazar.Web.Controllers
   
     public class ShopController : Controller
     {
+
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
         public ActionResult Index(string searchTerm, int? minimumPrice, int? maximumPrice, int? categoryId, int? sortBy, int? pageNo)
         {
             var pageSize = ConfigurationsService.ClassObject.PageSize();
@@ -49,6 +78,7 @@ namespace ClothBazar.Web.Controllers
             return PartialView(models);
         }
 
+        [Authorize]
         public ActionResult Checkout()
         {
             CheckoutViewModels models = new CheckoutViewModels();
@@ -61,6 +91,8 @@ namespace ClothBazar.Web.Controllers
                 models.CartProductIds = CartProductsCookie.Value.Split('-').Select(x => int.Parse(x)).ToList();
 
                 models.CartProducts = ProductsService.ClassObject.GetProducts(models.CartProductIds);
+
+                models.User = UserManager.FindById(User.Identity.GetUserId());
             }
             return View(models);
         }
