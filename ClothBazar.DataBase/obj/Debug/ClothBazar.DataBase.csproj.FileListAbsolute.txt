@@ -46,3 +46,5 @@ C:\Users\Alviya_D\Desktop\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBaza
 D:\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.Migrations.version.resources
 D:\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.csproj.GenerateResource.cache
 D:\My Prectise\clothbazar.web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.Migrations.version.resources
+D:\My Prectise\ClothBazar.Web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.Migrations.OrderOrderItem.resources
+D:\My Prectise\ClothBazar.Web\ClothBazar.DataBase\obj\Debug\ClothBazar.DataBase.Migrations.AddQuentityOderItems.resources

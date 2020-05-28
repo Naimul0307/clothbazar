@@ -16,7 +16,7 @@
                         @foreach (var product in Model.CartProducts)
                         {
                             var productQuantity = Model.CartProductIds.Where(p => p == product.Id).Count();
-                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <li class="list-group-item d-flex justify-content-between lh-condensed" data-id="@product.Id">
                                 <div>
                                     <h6 class="my-0">@i - @product.Name - Quantity:@productQuantity</h6>
                                     <small class="text-muted">@(product.Description.Length> 100 ? product.Description.Substring(0,99) : product.Description)</small>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="email">Email <span class="text-muted">(Optional)</span></label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter Email" value="@Model.User.Email"/>
+                            <input type="email" class="form-control" id="email" placeholder="Enter Email" value="@Model.User.Email" />
                         </div>
 
                         <div class="mb-3">
@@ -50,18 +50,50 @@
                             <input type="text" class="form-control" id="address" placeholder="Enter Address" required="" value="@Model.User.Address">
                         </div>
                         <hr class="mb-4">
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                        <button id="placeOrderBtn" class="btn btn-primary btn-lg btn-block" type="button">Place Order!</button>
                     </form>
                 </div>
             </div> <!-- /.row -->
         </div><!-- /.container -->
     </section><!-- /.flat-row -->
+
+<script>
+    $("#placeOrderBtn").click(function () {
+            $.ajax({
+                url: "@Url.Action("PlaceOrder","Shop")",
+                data: {
+                    productIds: "@string.Join("-", Model.CartProductIds)"
+                }
+            })
+                .done(function (response) {
+
+                    if (!response.Success)
+                    {
+                        $.cookie('CartProducts', '', { path: '/' });
+                        updateCartProducts();
+
+                        swal("Done", "Your Order has been placed.", "success").then((value) => {
+                            window.location = "@Url.Action("Index","Shop")";
+                        });
+                    }
+                    else
+                     {
+                        swal("Failed", "Unable order placed!", "worning");
+                     }
+            })
+            .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('fail');
+            });
+        });
+</script>
+
 }
+
 else
 {
-   <div>
-       <b> No Product In </b>
-   </div>
+    <div>
+        <b> No Product In </b>
+    </div>
 }
 
 

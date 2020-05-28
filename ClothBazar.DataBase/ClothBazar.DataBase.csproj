@@ -56,6 +56,14 @@
     <Compile Include="Migrations\202005071619019_version.designer.cs">
       <DependentUpon>202005071619019_version.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005280600364_Order &amp; OrderItem.cs" />
+    <Compile Include="Migrations\202005280600364_Order &amp; OrderItem.designer.cs">
+      <DependentUpon>202005280600364_Order &amp; OrderItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005280745246_Add-Quentity-OderItems.cs" />
+    <Compile Include="Migrations\202005280745246_Add-Quentity-OderItems.designer.cs">
+      <DependentUpon>202005280745246_Add-Quentity-OderItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,6 +80,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202005071619019_version.resx">
       <DependentUpon>202005071619019_version.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005280600364_Order &amp; OrderItem.resx">
+      <DependentUpon>202005280600364_Order &amp; OrderItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005280745246_Add-Quentity-OderItems.resx">
+      <DependentUpon>202005280745246_Add-Quentity-OderItems.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

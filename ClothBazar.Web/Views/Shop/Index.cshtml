@@ -84,18 +84,18 @@
 
 <script>
 	var callTimeout;
-	var priceSlider = $("#slide-range").slider({
-		range: true,
-		min: 0,
-		max: @Model.MaximumPrice,
-		values: [0, @Model.MaximumPrice],
-		slide: function (event, ui) {
-			var minPrice = ui.values[0];
-			var maxPrice = ui.values[1];
-			$("#amount").val("$" + minPrice + ".00" + " - " + "$" + maxPrice + ".00");
-			clearTimeout(callTimeout);
-            callTimeout = setTimeout(PriceRangeChange , 500);
-		}
+    var priceSlider = $("#slide-range").slider({
+        range: true,
+        min: 0,
+        max: @Model.MaximumPrice,
+        values: [0, @Model.MaximumPrice],
+        slide: function (event, ui) {
+            var minPrice = ui.values[0];
+            var maxPrice = ui.values[1];
+            $("#amount").val("$" + minPrice + ".00" + " - " + "$" + maxPrice + ".00");
+            clearTimeout(callTimeout);
+            callTimeout = setTimeout(PriceRangeChange, 500);
+        }
     });
 
     $(".dataLink").click(function () {
